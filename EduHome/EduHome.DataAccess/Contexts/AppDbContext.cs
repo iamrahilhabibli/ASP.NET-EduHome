@@ -8,6 +8,7 @@ namespace EduHome.DataAccess.Contexts
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<HomeSlider> homeSliders { get; set; }
+        public DbSet<Notices> notices { get; set; } 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
         //    modelBuilder.Entity<HomeSlider>().HasData(

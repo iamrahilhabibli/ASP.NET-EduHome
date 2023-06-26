@@ -5,4 +5,5 @@ namespace EduHomeUI.ViewModels;
 public class HomeVM
 {
     public IEnumerable<HomeSlider> homeSliders { get; set; }
+    public IEnumerable<Notices> notices { get; set; }
 }
