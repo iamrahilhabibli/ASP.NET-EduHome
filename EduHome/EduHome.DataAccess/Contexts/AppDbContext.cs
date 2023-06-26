@@ -16,5 +16,6 @@ namespace EduHome.DataAccess.Contexts
         public DbSet<CourseDetails> courseDetails { get; set; }
         public DbSet<Teachers> teachers { get; set; }
         public DbSet<TeacherDetails> teachersDetails { get; set;}
+        public DbSet<Students> students { get; set; }
     }
 }
