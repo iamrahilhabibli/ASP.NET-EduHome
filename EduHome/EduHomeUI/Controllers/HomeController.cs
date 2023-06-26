@@ -1,5 +1,7 @@
 ﻿using EduHome.DataAccess.Contexts;
+using EduHomeUI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace EduHomeUI.Controllers
 {
@@ -11,9 +13,13 @@ namespace EduHomeUI.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            HomeVM homeVM = new()
+            {
+                homeSliders = await _context.homeSliders.ToListAsync()
+            };
+            return View(homeVM);
         }
     }
 }

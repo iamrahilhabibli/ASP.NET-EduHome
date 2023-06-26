@@ -5,6 +5,7 @@ namespace EduHome.Core.Entities;
 
 public class HomeSlider:IEntity
 {
+    [Key]
     public int Id { get; set; }
     [Required,MaxLength(30)]
     public string Title { get; set; }
