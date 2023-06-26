@@ -42,7 +42,7 @@
 					<h3>notice board</h3>
 					@foreach (var (notice, index) in Model.notices.Select((notice, index) => (notice, index)))
 					{
-						<div class="single-notice-left @(index % 3 == 2 ? "pb-70" : "mb-25 pb-25") @(index == noticesCount - 1 ? "pb-75" : "")">
+						<div class="@(notice.isLeft ? "single-notice-left " : "")@(index % 3 == 2 ? "pb-70" : "mb-25 pb-25") @(index == noticesCount - 1 ? "pb-75" : "")">
 							<h4>@notice.Date.ToString("d, MMMM yyyy")</h4>
 							<p>@notice.Description</p>
 						</div>
