@@ -17,7 +17,15 @@ public class CoursesController : Controller
 	{
 		CourseVM courseVM = new()
 		{
-			Courses = await _context.courses.ToArrayAsync(),
+			Courses = await _context.courses.ToListAsync(),
+		};
+		return View(courseVM);
+	}
+	public async Task<IActionResult> Details()
+	{
+		CourseVM courseVM = new()
+		{
+			CourseDetails = await _context.courseDetails.ToListAsync(),
 		};
 		return View(courseVM);
 	}
