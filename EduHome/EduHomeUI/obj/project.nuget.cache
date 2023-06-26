@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "m2i0g/UHAvme4sSHavp80xE9JjNApml2Y5tAB9PO5tLRtzFdtawzm2APC6GGms/zFLh8gg21iH5kF+b4z/+1jQ==",
+  "dgSpecHash": "wlWFByAeDRMlcziMLqbMVcy6BTTG9k4KiE2rOKPZrixYxYuEj2xa8Lg5GSQySgit590AHIk83vSjnJMgRdlz5w==",
   "success": true,
   "projectFilePath": "C:\\Users\\Rhabi\\OneDrive\\Documents\\Backend\\EduHomeProject\\EduHome\\EduHomeUI\\EduHomeUI.csproj",
   "expectedPackageFiles": [
@@ -79,6 +79,7 @@
     "C:\\Users\\Rhabi\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.18\\microsoft.entityframeworkcore.6.0.18.nupkg.sha512",
     "C:\\Users\\Rhabi\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.18\\microsoft.entityframeworkcore.abstractions.6.0.18.nupkg.sha512",
     "C:\\Users\\Rhabi\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.18\\microsoft.entityframeworkcore.analyzers.6.0.18.nupkg.sha512",
+    "C:\\Users\\Rhabi\\.nuget\\packages\\microsoft.entityframeworkcore.design\\6.0.18\\microsoft.entityframeworkcore.design.6.0.18.nupkg.sha512",
     "C:\\Users\\Rhabi\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\6.0.18\\microsoft.entityframeworkcore.relational.6.0.18.nupkg.sha512",
     "C:\\Users\\Rhabi\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\6.0.18\\microsoft.entityframeworkcore.sqlserver.6.0.18.nupkg.sha512",
     "C:\\Users\\Rhabi\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\6.0.0\\microsoft.extensions.caching.abstractions.6.0.0.nupkg.sha512",

@@ -246,3 +246,6 @@ C:\Users\Rhabi\OneDrive\Documents\Backend\EduHomeProject\EduHome\EduHomeUI\obj\D
 C:\Users\Rhabi\OneDrive\Documents\Backend\EduHomeProject\EduHome\EduHomeUI\obj\Debug\net6.0\EduHomeUI.RazorAssemblyInfo.cs
 C:\Users\Rhabi\OneDrive\Documents\Backend\EduHomeProject\EduHome\EduHomeUI\bin\Debug\net6.0\EduHome.DataAccess.dll
 C:\Users\Rhabi\OneDrive\Documents\Backend\EduHomeProject\EduHome\EduHomeUI\bin\Debug\net6.0\EduHome.DataAccess.pdb
+C:\Users\Rhabi\OneDrive\Documents\Backend\EduHomeProject\EduHome\EduHomeUI\bin\Debug\net6.0\EduHome.Core.dll
+C:\Users\Rhabi\OneDrive\Documents\Backend\EduHomeProject\EduHome\EduHomeUI\bin\Debug\net6.0\EduHome.Core.pdb
+C:\Users\Rhabi\OneDrive\Documents\Backend\EduHomeProject\EduHome\EduHomeUI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll

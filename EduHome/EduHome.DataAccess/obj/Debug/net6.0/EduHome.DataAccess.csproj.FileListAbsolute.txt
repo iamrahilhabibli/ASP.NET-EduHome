@@ -12,3 +12,6 @@ C:\Users\Rhabi\OneDrive\Documents\Backend\EduHomeProject\EduHome\EduHome.DataAcc
 C:\Users\Rhabi\OneDrive\Documents\Backend\EduHomeProject\EduHome\EduHome.DataAccess\obj\Debug\net6.0\EduHome.DataAccess.pdb
 C:\Users\Rhabi\OneDrive\Documents\Backend\EduHomeProject\EduHome\EduHome.DataAccess\obj\Debug\net6.0\EduHome.DataAccess.genruntimeconfig.cache
 C:\Users\Rhabi\OneDrive\Documents\Backend\EduHomeProject\EduHome\EduHome.DataAccess\obj\Debug\net6.0\ref\EduHome.DataAccess.dll
+C:\Users\Rhabi\OneDrive\Documents\Backend\EduHomeProject\EduHome\EduHome.DataAccess\bin\Debug\net6.0\EduHome.Core.dll
+C:\Users\Rhabi\OneDrive\Documents\Backend\EduHomeProject\EduHome\EduHome.DataAccess\bin\Debug\net6.0\EduHome.Core.pdb
+C:\Users\Rhabi\OneDrive\Documents\Backend\EduHomeProject\EduHome\EduHome.DataAccess\obj\Debug\net6.0\EduHome.DataAccess.csproj.CopyComplete
