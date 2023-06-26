@@ -1,6 +1,8 @@
-﻿namespace EduHome.Core.Entities;
+﻿using EduHome.Core.Interfaces;
 
-public class Courses
+namespace EduHome.Core.Entities;
+
+public class Courses:IEntity
 {
     public int Id { get; set; }
     public string Name { get; set; }

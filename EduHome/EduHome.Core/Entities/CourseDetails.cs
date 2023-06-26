@@ -1,8 +1,13 @@
-﻿namespace EduHome.Core.Entities;
+﻿using EduHome.Core.Interfaces;
+using System.ComponentModel.DataAnnotations.Schema;
 
-public class CourseDetails
+namespace EduHome.Core.Entities;
+
+public class CourseDetails:IEntity
 {
-	public Courses Courses { get; set; }
+    public int Id { get; set; }
+    public Courses Courses { get; set; }
+    [ForeignKey("Courses")]
 	public int CourseId { get; set; }
     public DateTime StartDate { get; set; }
     public string Duration { get; set; }

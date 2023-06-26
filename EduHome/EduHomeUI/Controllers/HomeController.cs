@@ -20,7 +20,8 @@ namespace EduHomeUI.Controllers
             {
                 homeSliders = await _context.homeSliders.ToListAsync(),
                 notices = await _context.notices.ToListAsync(),
-                events = await _context.events.ToListAsync()
+                events = await _context.events.ToListAsync(),
+                courses = await _context.courses.ToListAsync(),
             };
             return View(homeVM);
         }

@@ -12,5 +12,7 @@ namespace EduHome.DataAccess.Contexts
         public DbSet<Events> events { get; set; }   
         public DbSet<EventDetails> eventDetails { get; set; }   
 
+        public DbSet<Courses> courses { get; set; }
+        public DbSet<CourseDetails> courseDetails { get; set; }
     }
 }
