@@ -11,4 +11,6 @@ public class Events:IEntity
     public DateTime EndTime { get; set; }
     public string Location { get; set; }
 	public EventDetails EventDetails { get; set; }
+
+    public bool IsNew { get; set; } 
 }
