@@ -3734,6 +3734,19 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
+      },
+      "EduHome.DataAccess/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "6.0.18"
+        },
+        "compile": {
+          "bin/placeholder/EduHome.DataAccess.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EduHome.DataAccess.dll": {}
+        }
       }
     }
   },
@@ -10664,10 +10677,16 @@
         "system.xml.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xdocument.nuspec"
       ]
+    },
+    "EduHome.DataAccess/1.0.0": {
+      "type": "project",
+      "path": "../EduHome.DataAccess/EduHome.DataAccess.csproj",
+      "msbuildProject": "../EduHome.DataAccess/EduHome.DataAccess.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "EduHome.DataAccess >= 1.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.18",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.14"
     ]
@@ -10704,7 +10723,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Rhabi\\OneDrive\\Documents\\Backend\\EduHomeProject\\EduHome\\EduHome.DataAccess\\EduHome.DataAccess.csproj": {
+              "projectPath": "C:\\Users\\Rhabi\\OneDrive\\Documents\\Backend\\EduHomeProject\\EduHome\\EduHome.DataAccess\\EduHome.DataAccess.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
