@@ -22,4 +22,8 @@ public class TeachersController : Controller
         };
 		return View(teachersVM);
 	}
+    public IActionResult Details()
+    {
+        return View();
+    }
 }
