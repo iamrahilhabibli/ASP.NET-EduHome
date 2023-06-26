@@ -1,4 +1,5 @@
 ﻿using EduHome.Core.Interfaces;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EduHome.Core.Entities
 {
@@ -10,5 +11,9 @@ namespace EduHome.Core.Entities
         public int ExperienceYears { get; set; }
         public string Hobbies { get; set; }
         public string Faculty { get; set; }
+        [ForeignKey("Teachers")]
+        public int TeacherId { get; set; }
+        public Teachers Teacher { get; set; }
+
     }
 }

@@ -8,4 +8,6 @@ public class Teachers:IEntity
     public string Name { get; set; }
     public string Position { get; set; }
     public string ImagePath { get; set; }
+    public TeacherDetails TeacherDetails { get; set; }
+
 }
