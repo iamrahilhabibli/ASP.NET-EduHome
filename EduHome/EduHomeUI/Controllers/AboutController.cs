@@ -21,4 +21,15 @@ public class AboutController : Controller
         };
 		return View(teachersVM);
 	}
+
+    public IActionResult Students()
+    {
+        var students = TempData["StudentsData"] as StudentsVM;
+        if (students == null)
+        {
+            return NotFound();
+        }
+
+        return View(students);
+    }
 }
