@@ -43,33 +43,33 @@
 					<h3>notice board</h3>
 					@foreach (var (notice, index) in Model.notices.Select((notice, index) => (notice, index)))
 					{
-						<div class="@(notice.isLeft ? "single-notice-left " : "")@(index % 3 == 2 ? "pb-70" : "mb-25 pb-25") @(index == noticesCount - 1 ? "pb-75" : "")">
-							<h4>@notice.Date.ToString</h4>
-							<p>@notice.Description</p>
+						<div class="@((notice.isLeft ? "single-notice-left " : "") + (index % 3 == 2 ? "pb-70" : "mb-25 pb-25") + (index == noticesCount - 1 ? "pb-75" : ""))">
+							@if (notice.isLeft)
+							{
+								<h4>@notice.Date.ToString()</h4>
+								<p>@notice.Description</p>
+							}
+							
 						</div>
+
 					}
 				</div>
 
 			</div>
 			<div class="col-md-6">
 				<div class="notice-right">
-					@foreach (var notice in Model.notices)
+					@foreach (var notice in Model.notices.Select((value, index) => new { Value = value, Index = index }))
 					{
-						
+						<div class="@(notice.Index < 2 && !notice.Value.isLeft ? "single-notice-right mb-25 pb-25" : "single-notice-right")">
+							@if (!notice.Value.isLeft)
+							{
+								<h3>@notice.Value.Title</h3>
+								<p>@notice.Value.Description</p>
+							}
+						</div>
 					}
-					<div class="single-notice-right mb-25 pb-25">
-						<h3>PROFESSIONAL TEACHER</h3>
-						<p>I must explain to you how all this mistaken idea of denouncing pleure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings </p>
-					</div>
-					<div class="single-notice-right mb-25 pb-25">
-						<h3>Online courses</h3>
-						<p>I must explain to you how all this mistaken idea of denouncing pleure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings </p>
-					</div>
-					<div class="single-notice-right">
-						<h3>easy to addmission</h3>
-						<p>I must explain to you how all this mistaken idea of denouncing pleure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings </p>
-					</div>
 				</div>
+
 			</div>
 		</div>
 	</div>
