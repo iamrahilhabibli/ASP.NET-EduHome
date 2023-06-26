@@ -4,5 +4,5 @@ namespace EduHomeUI.ViewModels;
 
 public class StudentsVM
 {
-    public List<Students> Students { get; set; }
+    public IEnumerable<Students> Students { get; set; }
 }
