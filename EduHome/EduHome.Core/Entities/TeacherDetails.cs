@@ -15,5 +15,14 @@ namespace EduHome.Core.Entities
         public int TeacherId { get; set; }
         public Teachers Teacher { get; set; }
 
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+        public string SkypeAddress { get; set; }
+        public int LanguageSkills { get; set; }
+        public int TeamLeaderSkills { get; set; }
+        public int DevelopmentSkills { get; set; }
+        public int Design { get; set; }
+        public int Innovation { get; set; }
+        public int Communication { get; set; }
     }
 }
