@@ -171,75 +171,24 @@
 			<div class="col-lg-6">
 				@foreach (var ev in Model.events)
 				{
-				<div class="single-event mb-35">
-					<div class="event-date">
-						<h3><a href="event-details.html">20 <span>June</span></a></h3>
-					</div>
-					<div class="event-content text-start">
-						<div class="event-content-left">
-							<h4><a href="event-details.html">MICRO BIOLOGICAL WORKSHOP</a></h4>
-							<ul>
-								<li><i class="fa fa-clock-o"></i>9.00 AM - 4.45 PM</li>
-								<li><i class="fa fa-map-marker"></i>New Yourk City</li>
-							</ul>
+					<div class="single-event @((ev == Model.events.Last()) ? "" : "mb-35")">
+						<div class="event-date">
+							<h3><a href="event-details.html">@ev.Date.Day <span>@ev.Date.ToString("MMMM")</span></a></h3>
 						</div>
-						<div class="event-content-right">
-							<a class="default-btn" href="event-details.html">join now</a>
+						<div class="event-content text-start">
+							<div class="event-content-left">
+								<h4><a href="event-details.html">@ev.Title</a></h4>
+								<ul>
+									<li><i class="fa fa-clock-o"></i>@ev.StartTime.ToString("h:mm tt") - @ev.EndTime.ToString("h:mm tt")</li>
+									<li><i class="fa fa-map-marker"></i>@ev.Location</li>
+								</ul>
+							</div>
+							<div class="event-content-right">
+								<a class="default-btn" href="event-details.html">join now</a>
+							</div>
 						</div>
 					</div>
-				</div>	
 				}
-				<div class="single-event mb-35">
-					<div class="event-date">
-						<h3><a href="event-details.html">18 <span>June</span></a></h3>
-					</div>
-					<div class="event-content text-start">
-						<div class="event-content-left">
-							<h4><a href="event-details.html">ADVANCE PHP WORKSHOP</a></h4>
-							<ul>
-								<li><i class="fa fa-clock-o"></i>9.00 AM - 4.45 PM</li>
-								<li><i class="fa fa-map-marker"></i>New Yourk City</li>
-							</ul>
-						</div>
-						<div class="event-content-right">
-							<a class="default-btn" href="event-details.html">join now</a>
-						</div>
-					</div>
-				</div>
-				<div class="single-event mb-35">
-					<div class="event-date">
-						<h3><a href="event-details.html">16 <span>June</span></a></h3>
-					</div>
-					<div class="event-content text-start">
-						<div class="event-content-left">
-							<h4><a href="event-details.html">LEARN ENGLISH HISTORY</a></h4>
-							<ul>
-								<li><i class="fa fa-clock-o"></i>9.00 AM - 4.45 PM</li>
-								<li><i class="fa fa-map-marker"></i>New Yourk City</li>
-							</ul>
-						</div>
-						<div class="event-content-right">
-							<a class="default-btn" href="event-details.html">join now</a>
-						</div>
-					</div>
-				</div>
-				<div class="single-event">
-					<div class="event-date">
-						<h3><a href="event-details.html">14 <span>June</span></a></h3>
-					</div>
-					<div class="event-content text-start">
-						<div class="event-content-left">
-							<h4><a href="event-details.html">GLOBAL ECONOMIC CONFERENCE</a></h4>
-							<ul>
-								<li><i class="fa fa-clock-o"></i>9.00 AM - 4.45 PM</li>
-								<li><i class="fa fa-map-marker"></i>New Yourk City</li>
-							</ul>
-						</div>
-						<div class="event-content-right">
-							<a class="default-btn" href="event-details.html">join now</a>
-						</div>
-					</div>
-				</div>
 			</div>
 			<div class="col-lg-6 pt-5 pt-lg-0">
 				<div class="single-event mb-35">
