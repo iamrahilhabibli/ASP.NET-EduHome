@@ -19,7 +19,8 @@ namespace EduHomeUI.Controllers
             HomeVM homeVM = new()
             {
                 homeSliders = await _context.homeSliders.ToListAsync(),
-                notices = await _context.notices.ToListAsync()
+                notices = await _context.notices.ToListAsync(),
+                events = await _context.events.ToListAsync()
             };
             return View(homeVM);
         }

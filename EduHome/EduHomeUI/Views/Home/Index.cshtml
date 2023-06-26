@@ -169,6 +169,8 @@
 		</div>
 		<div class="row">
 			<div class="col-lg-6">
+				@foreach (var ev in Model.events)
+				{
 				<div class="single-event mb-35">
 					<div class="event-date">
 						<h3><a href="event-details.html">20 <span>June</span></a></h3>
@@ -185,7 +187,8 @@
 							<a class="default-btn" href="event-details.html">join now</a>
 						</div>
 					</div>
-				</div>
+				</div>	
+				}
 				<div class="single-event mb-35">
 					<div class="event-date">
 						<h3><a href="event-details.html">18 <span>June</span></a></h3>

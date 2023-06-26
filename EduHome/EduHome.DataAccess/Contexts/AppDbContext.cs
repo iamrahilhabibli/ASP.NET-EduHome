@@ -9,13 +9,8 @@ namespace EduHome.DataAccess.Contexts
 
         public DbSet<HomeSlider> homeSliders { get; set; }
         public DbSet<Notices> notices { get; set; } 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<HomeSlider>().HasData(
-        //        new HomeSlider { Title = "EDUCATION MAKE PROPER HUMANITY", Description = "I must explain to you how all this mistaken idea of denouncing pleasure and prsing pain was born and I will give you a complete account of the system ", ImagePath = "assets/img/slider/slider1.jpg" },
-        //        new HomeSlider { Title = "EDUCATION MAKE PROPER HUMANITY", Description = "I must explain to you how all this mistaken idea of denouncing pleasure and prsing pain was born and I will give you a complete account of the system ", ImagePath = "assets/img/slider/slider1.jpg" },
-        //        new HomeSlider { Title = "EDUCATION MAKE PROPER HUMANITY", Description = "I must explain to you how all this mistaken idea of denouncing pleasure and prsing pain was born and I will give you a complete account of the system ", ImagePath = "assets/img/slider/slider1.jpg" }
-        //        );
-        //}
+        public DbSet<Events> events { get; set; }   
+        public DbSet<EventDetails> eventDetails { get; set; }   
+
     }
 }
