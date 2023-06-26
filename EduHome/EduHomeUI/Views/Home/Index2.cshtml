@@ -7,7 +7,7 @@
         <!-- Start Slingle Slide -->
         @foreach (var sliderItem in Model.homeSliders)
         {
-        <div class="single-slide item" style="background-image: url(@sliderItem.ImagePath)">
+            <div class="single-slide item" style="background-image: url(@sliderItem.ImagePath)">
             <!-- Start Slider Content -->
             <div class="slider-content-area">
                 <div class="container">
@@ -36,19 +36,19 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="single-service">
-                    <h3><a href="teacher.html">PROFESSIONAL TEACHER</a></h3>
+                    <h3><a asp-controller="Teachers" asp-action="Index">PROFESSIONAL TEACHER</a></h3>
                     <p>I must explain to you how all this mistaken denouncing pleure and praising pain </p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="single-service">
-                    <h3><a href="teacher.html">PROFESSIONAL TEACHER</a></h3>
+                    <h3><a asp-controller="Teachers" asp-action="Index">PROFESSIONAL TEACHER</a></h3>
                     <p>I must explain to you how all this mistaken denouncing pleure and praising pain </p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="single-service">
-                    <h3><a href="teacher.html">PROFESSIONAL TEACHER</a></h3>
+                    <h3><a asp-controller="Teachers" asp-action="Index">PROFESSIONAL TEACHER</a></h3>
                     <p>I must explain to you how all this mistaken denouncing pleure and praising pain </p>
                 </div>
             </div>
@@ -65,12 +65,12 @@
                     <h2>WELCOME TO <span>EDUHOME</span></h2>
                     <p>I must explain to you how all this mistaken idea of denouncing pleure and prsing pain was born and I will give you a complete account of the system, and expound the actual teachings  the master-builder of humanit happiness</p>
                     <p class="hidden-sm">I must explain to you how all this mistaken idea of denouncing pleure and prsing pain was born and I will give you a complete account of the system</p>
-                    <a class="default-btn" href="about.html">view courses</a>
+                    <a class="default-btn" asp-controller="About" asp-action="Index">view courses</a>
                 </div>
             </div>
             <div class="col-md-6 col-sm-6">
                 <div class="about-img">
-                    <img src="img/about/about.png" alt="about">
+                    <img src="assets/img/about/about.png" alt="about">
                 </div>
             </div>
         </div>
