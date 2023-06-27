@@ -7,5 +7,6 @@ namespace EduHomeUI.ViewModels
         public IEnumerable<Teachers> Teachers { get; set;}
         public IEnumerable<Testimonials> Testimonials { get; set;}
         public IEnumerable<Notices> Notices { get; set;}
+        public IEnumerable<Courses> Courses { get; set;}    
     }
 }
