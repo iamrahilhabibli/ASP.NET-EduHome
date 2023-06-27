@@ -46,13 +46,18 @@
                         <div class="course-details-right">
                             <h3>COURSE FEATURES</h3>
                             <ul>
-                                <li>starts <span>25 june, 2021</span></li>
-                                <li>duration <span>6 Month</span></li>
-                                <li>class duration <span>3 hours</span></li>
-                                <li>skill level <span>all level</span></li>
-                                <li>language <span>english</span></li>
-                                <li>students <span>420</span></li>
-                                <li>assesments <span>self</span></li>
+                                @foreach (var courseDetails in Model.CourseDetails)
+                                {
+                                    <li>starts <span>@courseDetails.StartDate</span></li>
+                                    <li>duration <span>@courseDetails.Duration</span></li>
+                                    <li>class duration <span>3 hours</span></li>
+                                    <li>skill level <span>@courseDetails.SkillLevel</span></li>
+                                    <li>language <span>@courseDetails.Language</span></li>
+                                    <li>students <span>@courseDetails.StudentCount</span></li>
+                                    <li>assesments <span>@courseDetails.Assesment</span></li>
+                                }
+                                
+                                
                             </ul>
                             <h3 class="red">course fee $789</h3>
                         </div>
