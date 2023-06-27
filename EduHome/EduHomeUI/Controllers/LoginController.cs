@@ -34,8 +34,6 @@ public class LoginController : Controller
 
                 return RedirectToAction("Index", "Home");
             }
-
-            ModelState.AddModelError(string.Empty, "Invalid username or password");
         }
 
         return View(user);
