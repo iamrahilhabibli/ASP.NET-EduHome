@@ -14,14 +14,5 @@ namespace EduHomeUI.Controllers
             _context = context;
         }
 
-        public async Task<ActionResult> Index()
-        {
-            var students = new StudentsVM
-            {
-                Students = await _context.students.ToListAsync()
-            };
-
-            return RedirectToAction("Students", "About", new { students });
-        }
     }
 }

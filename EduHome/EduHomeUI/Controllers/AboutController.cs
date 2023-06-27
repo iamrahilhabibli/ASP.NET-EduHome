@@ -15,10 +15,11 @@ public class AboutController : Controller
     }
     public async Task<IActionResult> Index()
     {
-        TeachersVM teachersVM = new TeachersVM
+        AboutVM about = new AboutVM
         {
-            Teachers = await _context.teachers.ToListAsync()
+            Teachers = await _context.teachers.ToListAsync(),
+            Students = await _context.students.ToListAsync()
         };
-		return View(teachersVM);
+		return View(about);
 	}
 }
