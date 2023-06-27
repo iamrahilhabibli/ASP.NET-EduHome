@@ -9,6 +9,7 @@
   <ItemGroup>
     <Folder Include="Areas\EHMasterPanel\Data\" />
     <Folder Include="Areas\EHMasterPanel\Models\" />
+    <Folder Include="Views\Login\" />
   </ItemGroup>
 
   <ItemGroup>
