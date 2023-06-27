@@ -1,5 +1,6 @@
 ﻿using EduHome.Core.Entities;
 using EduHome.DataAccess.Contexts;
+using EduHomeUI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,15 +21,28 @@ public class UserRepliesController : Controller
   
     }
     [HttpPost]
-    public IActionResult Create(UserReplies obj)
+    public IActionResult Create(CourseVM viewModel)
     {
         if (ModelState.IsValid)
         {
-            _context.userReplies.Add(obj);
-            _context.SaveChanges();
-            TempData["Success"] = "Category Created Successfully";
-            return RedirectToAction(nameof(Index));
+            if (!string.IsNullOrEmpty(viewModel.userReplies.Email))
+            {
+                _context.userReplies.Add(viewModel.userReplies);
+                _context.SaveChanges();
+                TempData["Success"] = "Category Created Successfully";
+
+                // Redirect to Courses/Details action with the category ID
+                return RedirectToAction("Details", "Courses");
+            }
+            else
+            {
+                ModelState.AddModelError("userReplies.Email", "The Email field is required.");
+            }
         }
-        return View();
+
+        return RedirectToAction(nameof(Index));
     }
+
+
+
 }
