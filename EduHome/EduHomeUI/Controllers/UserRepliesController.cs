@@ -20,17 +20,21 @@ public class UserRepliesController : Controller
         return View(objCategoryList);
   
     }
-    [HttpPost]
-    public IActionResult Create(CourseVM viewModel)
-    {
-        if (ModelState.IsValid)
-        {
-            _context.userReplies.Add(viewModel.userReplies);
-            _context.SaveChanges();
-            TempData["Success"] = "Category Created Successfully";
-            return RedirectToAction(nameof(Index));
-        }
-        return View();
-    }
+	[HttpPost]
+	public IActionResult Create(CourseVM viewModel)
+	{
+		var userReplies = viewModel.userReplies;
+
+		if (ModelState.IsValid)
+		{
+			_context.userReplies.Add(userReplies);
+			_context.SaveChanges();
+			TempData["Success"] = "Category Created Successfully";
+			return RedirectToAction(nameof(Index));
+		}
+
+		return View(viewModel);
+	}
+
 
 }
