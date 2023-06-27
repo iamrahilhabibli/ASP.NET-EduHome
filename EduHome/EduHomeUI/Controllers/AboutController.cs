@@ -19,6 +19,7 @@ public class AboutController : Controller
         {
             Teachers = await _context.teachers.ToListAsync(),
             Testimonials = await _context.testimonials.ToListAsync(),
+            Notices = await _context.notices.ToListAsync(),
         };
 		return View(about);
 	}
