@@ -1,4 +1,5 @@
-﻿using EduHome.DataAccess.Contexts;
+﻿using EduHome.Core.Entities;
+using EduHome.DataAccess.Contexts;
 using EduHomeUI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
