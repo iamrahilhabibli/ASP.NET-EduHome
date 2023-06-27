@@ -25,24 +25,12 @@ public class UserRepliesController : Controller
     {
         if (ModelState.IsValid)
         {
-            if (!string.IsNullOrEmpty(viewModel.userReplies.Email))
-            {
-                _context.userReplies.Add(viewModel.userReplies);
-                _context.SaveChanges();
-                TempData["Success"] = "Category Created Successfully";
-
-                // Redirect to Courses/Details action with the category ID
-                return RedirectToAction("Details", "Courses");
-            }
-            else
-            {
-                ModelState.AddModelError("userReplies.Email", "The Email field is required.");
-            }
+            _context.userReplies.Add(viewModel.userReplies);
+            _context.SaveChanges();
+            TempData["Success"] = "Category Created Successfully";
+            return RedirectToAction(nameof(Index));
         }
-
-        return RedirectToAction(nameof(Index));
+        return View();
     }
-
-
 
 }

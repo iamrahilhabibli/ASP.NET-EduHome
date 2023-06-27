@@ -40,6 +40,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Rhabi/OneDrive/Documents/Backend/EduHomeProject/EduHome/EduHomeUI/Views/Shared/_Notification.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ob3RpZmljYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Rhabi/OneDrive/Documents/Backend/EduHomeProject/EduHome/EduHomeUI/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -54,6 +58,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Rhabi/OneDrive/Documents/Backend/EduHomeProject/EduHome/EduHomeUI/Views/UserReplies/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclJlcGxpZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Rhabi/OneDrive/Documents/Backend/EduHomeProject/EduHome/EduHomeUI/Views/UserReplies/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclJlcGxpZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Rhabi/OneDrive/Documents/Backend/EduHomeProject/EduHome/EduHomeUI/Views/_ViewImports.cshtml]
