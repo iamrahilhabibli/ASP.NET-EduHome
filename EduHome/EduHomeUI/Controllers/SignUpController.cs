@@ -16,6 +16,10 @@ namespace EduHomeUI.Controllers
         {
             return View();
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
         [HttpPost]
         public IActionResult Create(Users user)
         {
