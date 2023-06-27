@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EduHome.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230626201050_StudentsTableAdded")]
-    partial class StudentsTableAdded
+    [Migration("20230627061347_Testm")]
+    partial class Testm
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -176,35 +176,6 @@ namespace EduHome.DataAccess.Migrations
                     b.ToTable("notices");
                 });
 
-            modelBuilder.Entity("EduHome.Core.Entities.Students", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImagePath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Surname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("students");
-                });
-
             modelBuilder.Entity("EduHome.Core.Entities.TeacherDetails", b =>
                 {
                     b.Property<int>("Id")
@@ -298,6 +269,44 @@ namespace EduHome.DataAccess.Migrations
                     b.ToTable("teachers");
                 });
 
+            modelBuilder.Entity("EduHome.Core.Entities.Testimonials", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("CourseId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Occupation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CourseId")
+                        .IsUnique();
+
+                    b.ToTable("testimonials");
+                });
+
             modelBuilder.Entity("EventDetails", b =>
                 {
                     b.Property<int>("Id")
@@ -347,6 +356,17 @@ namespace EduHome.DataAccess.Migrations
                     b.Navigation("Teacher");
                 });
 
+            modelBuilder.Entity("EduHome.Core.Entities.Testimonials", b =>
+                {
+                    b.HasOne("EduHome.Core.Entities.Courses", "Courses")
+                        .WithOne("testimonials")
+                        .HasForeignKey("EduHome.Core.Entities.Testimonials", "CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Courses");
+                });
+
             modelBuilder.Entity("EventDetails", b =>
                 {
                     b.HasOne("EduHome.Core.Entities.Events", "Event")
@@ -361,6 +381,9 @@ namespace EduHome.DataAccess.Migrations
             modelBuilder.Entity("EduHome.Core.Entities.Courses", b =>
                 {
                     b.Navigation("Details")
+                        .IsRequired();
+
+                    b.Navigation("testimonials")
                         .IsRequired();
                 });
 

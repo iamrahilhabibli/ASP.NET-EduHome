@@ -9,4 +9,5 @@ public class Courses:IEntity
     public string Description { get; set; }
     public string ImagePath { get; set; }
     public CourseDetails Details { get; set; }
+    public Testimonials testimonials { get; set; }
 }

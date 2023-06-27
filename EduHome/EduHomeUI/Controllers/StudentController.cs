@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EduHomeUI.Controllers
 {
-    public class StudentController : Controller
+    public class TestimonialsController : Controller
     {
         private readonly AppDbContext _context;
 
-        public StudentController(AppDbContext context)
+        public TestimonialsController(AppDbContext context)
         {
             _context = context;
         }
