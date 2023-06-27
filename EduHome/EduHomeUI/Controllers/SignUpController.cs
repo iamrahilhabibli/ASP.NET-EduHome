@@ -23,15 +23,23 @@ namespace EduHomeUI.Controllers
         [HttpPost]
         public IActionResult Create(Users user)
         {
-       
             if (ModelState.IsValid)
             {
                 _context.users.Add(user);
                 _context.SaveChanges();
-                TempData["Success"] = "Category Created Successfully";
+
+                if (user.Id == 1)
+                {
+                    user.IsAdmin = true;
+                    _context.SaveChanges();
+                }
+
+                TempData["Success"] = "User Created Successfully";
                 return RedirectToAction(nameof(Index));
             }
-            return View();
+
+            return View(user);
         }
+
     }
 }
