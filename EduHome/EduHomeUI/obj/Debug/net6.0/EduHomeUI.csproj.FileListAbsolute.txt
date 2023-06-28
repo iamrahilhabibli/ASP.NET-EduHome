@@ -249,3 +249,5 @@ C:\Users\Rhabi\OneDrive\Documents\Backend\EduHomeProject\EduHome\EduHomeUI\bin\D
 C:\Users\Rhabi\OneDrive\Documents\Backend\EduHomeProject\EduHome\EduHomeUI\bin\Debug\net6.0\EduHome.Core.dll
 C:\Users\Rhabi\OneDrive\Documents\Backend\EduHomeProject\EduHome\EduHomeUI\bin\Debug\net6.0\EduHome.Core.pdb
 C:\Users\Rhabi\OneDrive\Documents\Backend\EduHomeProject\EduHome\EduHomeUI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Rhabi\OneDrive\Documents\Backend\EduHomeProject\EduHome\EduHomeUI\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\Rhabi\OneDrive\Documents\Backend\EduHomeProject\EduHome\EduHomeUI\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

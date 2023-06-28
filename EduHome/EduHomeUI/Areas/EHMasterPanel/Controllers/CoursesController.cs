@@ -22,6 +22,7 @@ public class CoursesController : Controller
 		return View();
 	}
 	[HttpPost]
+	[AutoValidateAntiforgeryToken]
 	public IActionResult Create(CoursesViewModel courses)
 	{
 		if (ModelState.IsValid)
@@ -38,8 +39,6 @@ public class CoursesController : Controller
 
 			return RedirectToAction(nameof(Index));
 		}
-
 		return View();
 	}
-
 }
