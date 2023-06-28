@@ -33,14 +33,30 @@ public class CoursesController : Controller
 		{
 			return View();
 		}
+
 		Courses course = _mapper.Map<Courses>(courses);
+
+		CourseDetails details = new CourseDetails
+		{
+			StartDate = courses.StartDate,
+			Duration = courses.Duration,
+			SkillLevel = courses.SkillLevel,
+			Language = courses.Language,
+			StudentCount = courses.StudentCount,
+			Assesment = courses.Assesment,
+			Fee = courses.Fee
+		};
+
+		course.Details = details;
+
 		await _context.courses.AddAsync(course);
 		await _context.SaveChangesAsync();
+
 		TempData["Success"] = "Course Created Successfully";
 
 		return RedirectToAction(nameof(Index));
-
 	}
+
 	public async Task<IActionResult> Delete(int Id)
 	{
 		Courses course = await _context.courses.FindAsync(Id);
