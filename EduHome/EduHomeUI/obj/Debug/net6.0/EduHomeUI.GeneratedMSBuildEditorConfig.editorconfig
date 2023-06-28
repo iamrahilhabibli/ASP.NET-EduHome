@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Rhabi\OneDrive\Documents\Backend\EduHomeProject\EduHome\EduHomeUI
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Rhabi/OneDrive/Documents/Backend/EduHomeProject/EduHome/EduHomeUI/Areas/EHMasterPanel/Views/Courses/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRUhNYXN0ZXJQYW5lbFxWaWV3c1xDb3Vyc2VzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Rhabi/OneDrive/Documents/Backend/EduHomeProject/EduHome/EduHomeUI/Areas/EHMasterPanel/Views/Courses/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRUhNYXN0ZXJQYW5lbFxWaWV3c1xDb3Vyc2VzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
