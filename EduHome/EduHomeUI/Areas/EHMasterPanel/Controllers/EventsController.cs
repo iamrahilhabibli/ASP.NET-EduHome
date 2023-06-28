@@ -41,4 +41,29 @@ public class EventsController : Controller
 
 		return RedirectToAction(nameof(Index));
 	}
+	public async Task<IActionResult> Delete(int Id)
+	{
+		Events newEvent = await _context.events.FindAsync(Id);
+		if (newEvent == null)
+		{
+			return NotFound();
+		}
+
+		return View(newEvent);
+	}
+	[HttpPost]
+	[ActionName("Delete")]
+	[AutoValidateAntiforgeryToken]
+	public async Task<IActionResult> DeletePost(int Id)
+	{
+		Events newEvent = await _context.events.FindAsync(Id);
+		if (newEvent == null)
+		{
+			return NotFound();
+		}
+		_context.events.Remove(newEvent);
+		await _context.SaveChangesAsync();
+		TempData["Success"] = "Event Deleted Successfully";
+		return RedirectToAction(nameof(Index));
+	}
 }
