@@ -79,17 +79,18 @@ public class CoursesController : Controller
 
 	[HttpPost]
 	[ValidateAntiForgeryToken]
-	public async Task<IActionResult> Update(Courses course)
-	{
-		if (ModelState.IsValid)
+	public async Task<IActionResult> Update(CoursesViewModel courses)
+	{ 
+		if (!ModelState.IsValid)
 		{
-			_context.courses.Update(course);
-			await _context.SaveChangesAsync();
-			TempData["Success"] = "Category Updated Successfully";
-			return RedirectToAction(nameof(Index));
+			return View();
 		}
+		Courses course = _mapper.Map<Courses>(courses);
+		_context.courses.Update(course);
+		await _context.SaveChangesAsync();
+		TempData["Success"] = "Category Updated Successfully";
 
-		return View();
+		return RedirectToAction(nameof(Index));
 	}
 
 
