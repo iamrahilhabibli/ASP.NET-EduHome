@@ -1,4 +1,5 @@
 ﻿using EduHome.Core.Interfaces;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EduHome.Core.Entities
@@ -18,11 +19,22 @@ namespace EduHome.Core.Entities
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public string SkypeAddress { get; set; }
-        public int LanguageSkills { get; set; }
-        public int TeamLeaderSkills { get; set; }
-        public int DevelopmentSkills { get; set; }
-        public int Design { get; set; }
-        public int Innovation { get; set; }
-        public int Communication { get; set; }
-    }
+		[Range(0, 100, ErrorMessage = "The value must be between 0 and 100.")]
+		public int LanguageSkills { get; set; }
+
+		[Range(0, 100, ErrorMessage = "The value must be between 0 and 100.")]
+		public int TeamLeaderSkills { get; set; }
+
+		[Range(0, 100, ErrorMessage = "The value must be between 0 and 100.")]
+		public int DevelopmentSkills { get; set; }
+
+		[Range(0, 100, ErrorMessage = "The value must be between 0 and 100.")]
+		public int Design { get; set; }
+
+		[Range(0, 100, ErrorMessage = "The value must be between 0 and 100.")]
+		public int Innovation { get; set; }
+
+		[Range(0, 100, ErrorMessage = "The value must be between 0 and 100.")]
+		public int Communication { get; set; }
+	}
 }
