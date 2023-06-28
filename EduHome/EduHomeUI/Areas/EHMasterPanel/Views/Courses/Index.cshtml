@@ -35,8 +35,8 @@
 									<td>@course.Name</td>
 									<td>@course.Description</td>
 									<td>
-										<a  class="btn btn-warning mb-4">Edit</a>
-										<a asp-action="Delete" asp-route-id="@course.Id" class="btn btn-danger mb-4">Delete</a>
+										<a class="btn btn-warning mb-4">	<i class="bi bi-pencil-square"></i></a>
+										<a asp-action="Delete" asp-route-id="@course.Id" class="btn btn-danger mb-4"><i class="bi bi-trash-fill"></i></a>
 									</td>
 								</tr>
 								count++;

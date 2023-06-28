@@ -63,7 +63,33 @@ public class CoursesController : Controller
 		}
 		_context.courses.Remove(course);
 		await _context.SaveChangesAsync();
+		TempData["Success"] = "Course Deleted Successfully";
 		return RedirectToAction(nameof(Index));
+	}
+
+	public async Task<IActionResult> Update(int Id)
+	{
+		Courses course = await _context.courses.FindAsync(Id);
+		if (course == null)
+		{
+			return NotFound();
+		}
+		return View(course);
+	}
+
+	[HttpPost]
+	[ValidateAntiForgeryToken]
+	public async Task<IActionResult> Update(Courses course)
+	{
+		if (ModelState.IsValid)
+		{
+			_context.courses.Update(course);
+			await _context.SaveChangesAsync();
+			TempData["Success"] = "Category Updated Successfully";
+			return RedirectToAction(nameof(Index));
+		}
+
+		return View();
 	}
 
 
