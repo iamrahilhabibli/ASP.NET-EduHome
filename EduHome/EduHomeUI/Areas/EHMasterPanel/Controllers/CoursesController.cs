@@ -76,22 +76,19 @@ public class CoursesController : Controller
 		}
 		return View(course);
 	}
-
 	[HttpPost]
 	[ValidateAntiForgeryToken]
 	public async Task<IActionResult> Update(CoursesViewModel courses)
-	{ 
+	{
 		if (!ModelState.IsValid)
 		{
 			return View();
 		}
+
 		Courses course = _mapper.Map<Courses>(courses);
-		_context.courses.Update(course);
+		_context.Entry(course).State = EntityState.Modified;
 		await _context.SaveChangesAsync();
 		TempData["Success"] = "Category Updated Successfully";
-
 		return RedirectToAction(nameof(Index));
 	}
-
-
 }
