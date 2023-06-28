@@ -32,12 +32,9 @@ public class UserRepliesController : Controller
         {
             _context.userReplies.Add(userReplies);
             _context.SaveChanges();
-            TempData["Success"] = "Category Created Successfully";
+            TempData["Success"] = "Reply Sent Successfully";
             return RedirectToAction(nameof(Index));
         }
         return View(reply);
     }
-
-
-
 }

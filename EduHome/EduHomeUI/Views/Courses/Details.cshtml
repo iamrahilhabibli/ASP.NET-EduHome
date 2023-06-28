@@ -1,8 +1,6 @@
 ﻿@using EduHomeUI.ViewModels;
 @model CourseVM
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation/1.19.3/jquery.validate.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+<partial name="_Notification" />
 
 <div class="banner-area-wrapper">
     <div class="banner-area text-center">
@@ -89,23 +87,23 @@
                             }
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p>Name</p>
+                                    <p></p>
                                     <label asp-for="@userReply.Name" class="p-0"></label>
                                     <input asp-for="@userReply.Name">
                                     <span asp-validation-for="@userReply.Name" class="text-danger"></span>
                                 </div>
                                 <div class="col-md-12">
-                                    <p>Email</p>
+                                    <p></p>
                                     <label asp-for="@userReply.Email" class="p-0"></label>
                                     <input asp-for="@userReply.Email">
                                     <span asp-validation-for="@userReply.Email" class="text-danger"></span>
                                 </div>
                                 <div class="col-md-12">
-                                    <p>Subject</p>
+                                    <p></p>
                                     <label asp-for="@userReply.Subject" class="p-0"></label>
                                     <input asp-for="@userReply.Subject">
                                     <span asp-validation-for="@userReply.Subject" class="text-danger"></span>
-                                    <p>Message</p>
+                                    <p></p>
                                     <label asp-for="@userReply.Message" class="p-0"></label>
                                     <textarea asp-for="@userReply.Message"></textarea>
                                     <span asp-validation-for="@userReply.Message" class="text-danger"></span>
@@ -114,6 +112,7 @@
                             <button type="submit" class="reply-btn" data-text="send">Send</button>
                             <p class="form-messege"></p>
                         </form>
+
 
 
                     </div>
