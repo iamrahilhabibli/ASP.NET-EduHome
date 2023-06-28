@@ -67,19 +67,7 @@
                     <div class="reply-area">
                         <h3>LEAVE A REPLY</h3>
                         <p>I must explain to you how all this a mistaken idea of ncing great explorer of the rut<br> the is lder of human happinescias unde omnis iste natus error sit volptatem </p>
-       @*                 <form method="post" asp-controller="UserReplies" asp-action="Create">
-                            @{
-                                var userReply = ViewBag.UserReply as UserReplyVM;
-                            }
-                            <div class="col-md-12">
-                                <p>Name</p>
-                                <label asp-for="@userReply.Name" class="p-0"></label>
-                                <input asp-for="@userReply.Name">
-                                <span asp-validation-for="@userReply.Name" class="text-danger"></span>
-                            </div>
-                            <button type="submit" class="reply-btn" data-text="send">Send</button>
-                            <p class="form-messege"></p>
-                        </form>*@
+
 
                         <form method="post" asp-controller="UserReplies" asp-action="Create">
                             @{

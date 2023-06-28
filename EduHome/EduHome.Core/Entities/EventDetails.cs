@@ -7,7 +7,8 @@ public class EventDetails : IEntity
 	public int Id { get; set; }
     public string Title { get; set; }
     public string Description { get; set; }
-	[ForeignKey("Events")]
+    public string Venue { get; set; }
+    [ForeignKey("Events")]
 	public int EventId { get; set; }
 	public Events Event { get; set; }
 }
