@@ -60,7 +60,41 @@ namespace EduHomeUI.Areas.EHMasterPanel.Controllers
 			await _context.teachers.AddAsync(newT);
 			await _context.SaveChangesAsync();
 
-			TempData["Success"] = "Course Created Successfully";
+			TempData["Success"] = "Teacher Created Successfully";
+
+			return RedirectToAction(nameof(Index));
+		}
+
+		public async Task<IActionResult> Delete(int Id)
+		{
+			Teachers teacher = await _context.teachers.FindAsync(Id);
+			if (teacher == null)
+			{
+				return NotFound();
+			}
+
+			return View(teacher);
+		}
+		[HttpPost]
+		[ActionName("Delete")]
+		[AutoValidateAntiforgeryToken]
+		public async Task<IActionResult> DeletePost(int Id)
+		{
+			Teachers teacher = await _context.teachers.FindAsync(Id);
+			if (teacher == null)
+			{
+				return NotFound();
+			}
+
+			TeacherDetails details = await _context.teachersDetails.FindAsync(teacher.Id);
+			if (details != null)
+			{
+				_context.teachersDetails.Remove(details);
+			}
+
+			_context.teachers.Remove(teacher);
+			await _context.SaveChangesAsync();
+			TempData["Success"] = "Teacher Deleted Successfully";
 
 			return RedirectToAction(nameof(Index));
 		}
