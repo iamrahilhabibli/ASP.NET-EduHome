@@ -40,4 +40,30 @@ public class CoursesController : Controller
 		return RedirectToAction(nameof(Index));
 
 	}
+	public async Task<IActionResult> Delete(int Id)
+	{
+		Courses course = await _context.courses.FindAsync(Id);
+		if (course == null)
+		{
+			return NotFound();
+		}
+
+		return View(course);
+	}
+	[HttpPost]
+	[ActionName("Delete")]
+	[AutoValidateAntiforgeryToken]
+	public async Task<IActionResult> DeletePost(int Id)
+	{
+		Courses course = await _context.courses.FindAsync(Id);
+		if (course == null)
+		{
+			return NotFound();
+		}
+		_context.courses.Remove(course);
+		await _context.SaveChangesAsync();
+		return RedirectToAction(nameof(Index));
+	}
+
+
 }
