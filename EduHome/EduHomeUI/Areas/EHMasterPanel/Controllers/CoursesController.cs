@@ -77,11 +77,20 @@ public class CoursesController : Controller
 		{
 			return NotFound();
 		}
+
+		CourseDetails details = await _context.courseDetails.FindAsync(course.Id);
+		if (details != null)
+		{
+			_context.courseDetails.Remove(details);
+		}
+
 		_context.courses.Remove(course);
 		await _context.SaveChangesAsync();
 		TempData["Success"] = "Course Deleted Successfully";
+
 		return RedirectToAction(nameof(Index));
 	}
+
 
 	//public async Task<IActionResult> Update(int Id)
 	//{
