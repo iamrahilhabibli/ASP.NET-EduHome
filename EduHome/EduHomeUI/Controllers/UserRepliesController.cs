@@ -1,4 +1,5 @@
-﻿using EduHome.Core.Entities;
+﻿using AutoMapper;
+using EduHome.Core.Entities;
 using EduHome.DataAccess.Contexts;
 using EduHomeUI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -9,10 +10,12 @@ namespace EduHomeUI.Controllers;
 public class UserRepliesController : Controller
 {
     private readonly AppDbContext _context;
+	private readonly IMapper _mapper;
 
-    public UserRepliesController(AppDbContext context)
+    public UserRepliesController(AppDbContext context,IMapper mapper)
     {
         _context = context;
+		_mapper = mapper;
     }
     public IActionResult Index()
     {
@@ -20,21 +23,21 @@ public class UserRepliesController : Controller
         return View(objCategoryList);
   
     }
-	[HttpPost]
-	public IActionResult Create(CourseVM viewModel)
-	{
-		var userReplies = viewModel.userReplies;
+    [HttpPost]
+    public IActionResult Create(UserReplyVM reply)
+    {
+        UserReplies userReplies = _mapper.Map<UserReplies>(reply);
 
-		if (ModelState.IsValid)
-		{
-			_context.userReplies.Add(userReplies);
-			_context.SaveChanges();
-			TempData["Success"] = "Category Created Successfully";
-			return RedirectToAction(nameof(Index));
-		}
+        if (ModelState.IsValid)
+        {
+            _context.userReplies.Add(userReplies);
+            _context.SaveChanges();
+            TempData["Success"] = "Category Created Successfully";
+            return RedirectToAction(nameof(Index));
+        }
+        return View(reply);
+    }
 
-		return View(viewModel);
-	}
 
 
 }

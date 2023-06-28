@@ -69,35 +69,51 @@
                     <div class="reply-area">
                         <h3>LEAVE A REPLY</h3>
                         <p>I must explain to you how all this a mistaken idea of ncing great explorer of the rut<br> the is lder of human happinescias unde omnis iste natus error sit volptatem </p>
+       @*                 <form method="post" asp-controller="UserReplies" asp-action="Create">
+                            @{
+                                var userReply = ViewBag.UserReply as UserReplyVM;
+                            }
+                            <div class="col-md-12">
+                                <p>Name</p>
+                                <label asp-for="@userReply.Name" class="p-0"></label>
+                                <input asp-for="@userReply.Name">
+                                <span asp-validation-for="@userReply.Name" class="text-danger"></span>
+                            </div>
+                            <button type="submit" class="reply-btn" data-text="send">Send</button>
+                            <p class="form-messege"></p>
+                        </form>*@
+
                         <form method="post" asp-controller="UserReplies" asp-action="Create">
+                            @{
+                                var userReply = ViewBag.UserReply as UserReplyVM;
+                            }
                             <div class="row">
                                 <div class="col-md-12">
                                     <p>Name</p>
-                                    <label asp-for="userReplies.Name" class="p-0"></label>
-                                    <input asp-for="userReplies.Name">
-                                    <span asp-validation-for="userReplies.Name" class="text-danger"></span>
+                                    <label asp-for="@userReply.Name" class="p-0"></label>
+                                    <input asp-for="@userReply.Name">
+                                    <span asp-validation-for="@userReply.Name" class="text-danger"></span>
                                 </div>
                                 <div class="col-md-12">
                                     <p>Email</p>
-                                    <label asp-for="userReplies.Email" class="p-0"></label>
-                                    <input asp-for="userReplies.Email">
-                                    <span asp-validation-for="userReplies.Email" class="text-danger"></span>
+                                    <label asp-for="@userReply.Email" class="p-0"></label>
+                                    <input asp-for="@userReply.Email">
+                                    <span asp-validation-for="@userReply.Email" class="text-danger"></span>
                                 </div>
                                 <div class="col-md-12">
                                     <p>Subject</p>
-                                    <label asp-for="userReplies.Subject" class="p-0"></label>
-                                    <input asp-for="userReplies.Subject">
-                                    <span asp-validation-for="userReplies.Subject" class="text-danger"></span>
+                                    <label asp-for="@userReply.Subject" class="p-0"></label>
+                                    <input asp-for="@userReply.Subject">
+                                    <span asp-validation-for="@userReply.Subject" class="text-danger"></span>
                                     <p>Message</p>
-                                    <label asp-for="userReplies.Message" class="p-0"></label>
-                                    <textarea asp-for="userReplies.Message"></textarea>
-                                    <span asp-validation-for="userReplies.Message" class="text-danger"></span>
+                                    <label asp-for="@userReply.Message" class="p-0"></label>
+                                    <textarea asp-for="@userReply.Message"></textarea>
+                                    <span asp-validation-for="@userReply.Message" class="text-danger"></span>
                                 </div>
                             </div>
                             <button type="submit" class="reply-btn" data-text="send">Send</button>
                             <p class="form-messege"></p>
                         </form>
-
 
 
                     </div>
