@@ -1,0 +1,55 @@
+﻿@using EduHome.Core.Entities;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<Events>
+<partial name="_Notification" />
+@{
+	ViewData["Title"] = "Index";
+	int count = 1;
+}
+<div class="container-fluid">
+
+	<!-- start page title -->
+	<div class="row">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Sliders</h4>
+				<a asp-controller="Courses" asp-action="Create" class="btn btn-primary mb-4">Create New Course</a>
+				<div class="table-responsive">
+					<table class="table table-dark mb-0">
+
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Title</th>
+								<th>Date</th>
+								<th>Start-Time</th>
+								<th>End-Time</th>
+								<th>Location</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (var events in Model)
+							{
+								<tr>
+									<th scope="row">@count</th>
+									<td> @events.Title </td>
+									<td>@events.Date</td>
+									<td>@events.StartTime</td>
+									<td>@events.EndTime</td>
+									<td>@events.Location</td>
+									<td>
+										<a  class="btn btn-warning mb-4">	<i class="bi bi-pencil-square"></i></a>
+										<a class="btn btn-danger mb-4"><i class="bi bi-trash-fill"></i></a>
+									</td>
+								</tr>
+								count++;
+							}
+
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

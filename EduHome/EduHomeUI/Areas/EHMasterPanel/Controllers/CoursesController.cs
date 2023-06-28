@@ -67,28 +67,28 @@ public class CoursesController : Controller
 		return RedirectToAction(nameof(Index));
 	}
 
-	public async Task<IActionResult> Update(int Id)
-	{
-		Courses course = await _context.courses.FindAsync(Id);
-		if (course == null)
-		{
-			return NotFound();
-		}
-		return View(course);
-	}
-	[HttpPost]
-	[ValidateAntiForgeryToken]
-	public async Task<IActionResult> Update(CoursesViewModel courses)
-	{
-		if (!ModelState.IsValid)
-		{
-			return View();
-		}
+	//public async Task<IActionResult> Update(int Id)
+	//{
+	//	Courses course = await _context.courses.FindAsync(Id);
+	//	if (course == null)
+	//	{
+	//		return NotFound();
+	//	}
+	//	return View(course);
+	//}
+	//[HttpPost]
+	//[ValidateAntiForgeryToken]
+	//public async Task<IActionResult> Update(CoursesViewModel courses)
+	//{
+	//	if (!ModelState.IsValid)
+	//	{
+	//		return View();
+	//	}
 
-		Courses course = _mapper.Map<Courses>(courses);
-		_context.Entry(course).State = EntityState.Modified;
-		await _context.SaveChangesAsync();
-		TempData["Success"] = "Category Updated Successfully";
-		return RedirectToAction(nameof(Index));
-	}
+	//	Courses course = _mapper.Map<Courses>(courses);
+	//	_context.Entry(course).State = EntityState.Modified;
+	//	await _context.SaveChangesAsync();
+	//	TempData["Success"] = "Category Updated Successfully";
+	//	return RedirectToAction(nameof(Index));
+	//}
 }
