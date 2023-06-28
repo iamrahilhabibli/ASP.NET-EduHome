@@ -36,6 +36,7 @@ public class CoursesController : Controller
 		Courses course = _mapper.Map<Courses>(courses);
 		await _context.courses.AddAsync(course);
 		await _context.SaveChangesAsync();
+		TempData["Success"] = "Course Created Successfully";
 
 		return RedirectToAction(nameof(Index));
 
