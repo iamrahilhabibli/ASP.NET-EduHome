@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using EduHome.Core.Entities;
 using EduHome.DataAccess.Migrations;
 using EduHomeUI.ViewModels;
 using System.Reflection.Metadata;
@@ -9,7 +10,7 @@ namespace EduHomeUI.Mappers
 	{
 		public CoursesProfile()
 		{
-			CreateMap<CoursesViewModel, CoursesAdded>().ReverseMap();
+			CreateMap<CoursesViewModel, Courses>().ReverseMap();
 		}
 	}
 }

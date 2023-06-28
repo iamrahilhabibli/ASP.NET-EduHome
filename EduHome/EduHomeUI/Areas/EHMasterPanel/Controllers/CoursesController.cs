@@ -1,17 +1,21 @@
-﻿using EduHome.Core.Entities;
+﻿using AutoMapper;
+using EduHome.Core.Entities;
 using EduHome.DataAccess.Contexts;
 using EduHomeUI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata;
 
 namespace EduHomeUI.Areas.EHMasterPanel.Controllers;
 [Area("EHMasterPanel")]
 public class CoursesController : Controller
 {
 	private readonly AppDbContext _context;
-	public CoursesController(AppDbContext context)
+	private readonly IMapper _mapper;
+	public CoursesController(AppDbContext context, IMapper mapper)
 	{
 		_context = context;
+		_mapper = mapper;
 	}
 	public async Task<IActionResult> Index()
 	{
@@ -23,22 +27,17 @@ public class CoursesController : Controller
 	}
 	[HttpPost]
 	[AutoValidateAntiforgeryToken]
-	public IActionResult Create(CoursesViewModel courses)
+	public async Task<IActionResult> Create(CoursesViewModel courses)
 	{
-		if (ModelState.IsValid)
+		if (!ModelState.IsValid)
 		{
-			var course = new Courses
-			{
-				Name = courses.Name,
-				Description = courses.Description,
-				ImagePath = courses.ImagePath
-			};
-
-			_context.courses.Add(course);
-			_context.SaveChanges();
-
-			return RedirectToAction(nameof(Index));
+			return View();
 		}
-		return View();
+		Courses course = _mapper.Map<Courses>(courses);
+		await _context.courses.AddAsync(course);
+		await _context.SaveChangesAsync();
+
+		return RedirectToAction(nameof(Index));
+
 	}
 }
