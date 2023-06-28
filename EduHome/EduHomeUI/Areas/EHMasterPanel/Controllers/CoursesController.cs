@@ -1,4 +1,6 @@
-﻿using EduHome.DataAccess.Contexts;
+﻿using EduHome.Core.Entities;
+using EduHome.DataAccess.Contexts;
+using EduHomeUI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,4 +21,25 @@ public class CoursesController : Controller
 	{
 		return View();
 	}
+	[HttpPost]
+	public IActionResult Create(CoursesViewModel courses)
+	{
+		if (ModelState.IsValid)
+		{
+			var course = new Courses
+			{
+				Name = courses.Name,
+				Description = courses.Description,
+				ImagePath = courses.ImagePath
+			};
+
+			_context.courses.Add(course);
+			_context.SaveChanges();
+
+			return RedirectToAction(nameof(Index));
+		}
+
+		return View();
+	}
+
 }
