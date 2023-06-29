@@ -92,29 +92,29 @@ public class CoursesController : Controller
 	}
 
 
-    public async Task<IActionResult> Update(int Id)
-    {
-        Courses course = await _context.courses.FindAsync(Id);
-        if (course == null)
-        {
-            return NotFound();
-        }
+	public async Task<IActionResult> Update(int Id)
+	{
+		Courses course = await _context.courses.FindAsync(Id);
+		if (course == null)
+		{
+			return NotFound();
+		}
 
-        CoursesViewModel courseViewModel = _mapper.Map<CoursesViewModel>(course);
-        return View(courseViewModel);
-    }
+		CoursesViewModel courseViewModel = _mapper.Map<CoursesViewModel>(course);
+		return View(courseViewModel);
+	}
 
-    [HttpPost]
+	[HttpPost]
 	[ValidateAntiForgeryToken]
 	public async Task<IActionResult> Update(CoursesViewModel courses)
 	{
 		if (!ModelState.IsValid)
 		{
-			return View();
+			return View(courses);
 		}
 
 		Courses course = _mapper.Map<Courses>(courses);
-		_context.Entry(course).State = EntityState.Modified;
+		//_context.Entry(course).State = EntityState.Modified;
 		await _context.SaveChangesAsync();
 		TempData["Success"] = "Category Updated Successfully";
 		return RedirectToAction(nameof(Index));
