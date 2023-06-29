@@ -103,20 +103,55 @@ public class CoursesController : Controller
 		CoursesViewModel courseViewModel = _mapper.Map<CoursesViewModel>(course);
 		return View(courseViewModel);
 	}
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Update(int id, CoursesViewModel courses)
+    {
+        if (!ModelState.IsValid)
+        {
+            return View(courses);
+        }
 
-	[HttpPost]
-	[ValidateAntiForgeryToken]
-	public async Task<IActionResult> Update(CoursesViewModel courses)
-	{
-		if (!ModelState.IsValid)
-		{
-			return View(courses);
-		}
+        Courses course = await _context.courses.FindAsync(id);
+        if (course == null)
+        {
+            return NotFound();
+        }
 
-		Courses course = _mapper.Map<Courses>(courses);
-		//_context.Entry(course).State = EntityState.Modified;
-		await _context.SaveChangesAsync();
-		TempData["Success"] = "Category Updated Successfully";
-		return RedirectToAction(nameof(Index));
-		}
-	}
+        course.Name = courses.Name;
+        course.Description = courses.Description;
+        course.ImagePath = courses.ImagePath;
+
+        // Update the CourseDetails properties
+        if (course.Details != null)
+        {
+            course.Details.StartDate = courses.StartDate;
+            course.Details.Duration = courses.Duration;
+            course.Details.SkillLevel = courses.SkillLevel;
+            course.Details.Language = courses.Language;
+            course.Details.StudentCount = courses.StudentCount;
+            course.Details.Assesment = courses.Assesment;
+            course.Details.Fee = courses.Fee;
+        }
+        else
+        {
+            CourseDetails newDetails = new CourseDetails
+            {
+                StartDate = courses.StartDate,
+                Duration = courses.Duration,
+                SkillLevel = courses.SkillLevel,
+                Language = courses.Language,
+                StudentCount = courses.StudentCount,
+                Assesment = courses.Assesment,
+                Fee = courses.Fee
+            };
+            course.Details = newDetails;
+        }
+
+        await _context.SaveChangesAsync();
+
+        TempData["Success"] = "Course Updated Successfully";
+
+        return RedirectToAction(nameof(Index));
+    }
+
