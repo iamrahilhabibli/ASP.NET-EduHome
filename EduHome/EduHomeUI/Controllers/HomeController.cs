@@ -41,5 +41,13 @@ namespace EduHomeUI.Controllers
 			};
 			return View(homeVM);
 		}
+		public async Task<IActionResult> Index4()
+		{
+			HomeVM homeVM = new()
+			{
+				homeSliders = await _context.homeSliders.ToListAsync(),
+			};
+			return View(homeVM);
+		}
 	}
 }
