@@ -103,55 +103,61 @@ public class CoursesController : Controller
 		CoursesViewModel courseViewModel = _mapper.Map<CoursesViewModel>(course);
 		return View(courseViewModel);
 	}
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Update(int id, CoursesViewModel courses)
-    {
-        if (!ModelState.IsValid)
-        {
-            return View(courses);
-        }
+	[HttpPost]
+	[ValidateAntiForgeryToken]
+	public async Task<IActionResult> Update(int id, CoursesViewModel courses)
+	{
+		if (!ModelState.IsValid)
+		{
+			return View(courses);
+		}
 
-        Courses course = await _context.courses.FindAsync(id);
-        if (course == null)
-        {
-            return NotFound();
-        }
+		Courses course = await _context.courses.Include(c => c.Details).FirstOrDefaultAsync(c => c.Id == id);
+		if (course == null)
+		{
+			return NotFound();
+		}
 
-        course.Name = courses.Name;
-        course.Description = courses.Description;
-        course.ImagePath = courses.ImagePath;
+		course.Name = courses.Name;
+		course.Description = courses.Description;
+		course.ImagePath = courses.ImagePath;
 
-        // Update the CourseDetails properties
-        if (course.Details != null)
-        {
-            course.Details.StartDate = courses.StartDate;
-            course.Details.Duration = courses.Duration;
-            course.Details.SkillLevel = courses.SkillLevel;
-            course.Details.Language = courses.Language;
-            course.Details.StudentCount = courses.StudentCount;
-            course.Details.Assesment = courses.Assesment;
-            course.Details.Fee = courses.Fee;
-        }
-        else
-        {
-            CourseDetails newDetails = new CourseDetails
-            {
-                StartDate = courses.StartDate,
-                Duration = courses.Duration,
-                SkillLevel = courses.SkillLevel,
-                Language = courses.Language,
-                StudentCount = courses.StudentCount,
-                Assesment = courses.Assesment,
-                Fee = courses.Fee
-            };
-            course.Details = newDetails;
-        }
+		// Update the CourseDetails properties
+		if (course.Details != null)
+		{
+			course.Details.StartDate = courses.StartDate;
+			course.Details.Duration = courses.Duration;
+			course.Details.SkillLevel = courses.SkillLevel;
+			course.Details.Language = courses.Language;
+			course.Details.StudentCount = courses.StudentCount;
+			course.Details.Assesment = courses.Assesment;
+			course.Details.Fee = courses.Fee;
 
-        await _context.SaveChangesAsync();
+			_context.Entry(course.Details).State = EntityState.Modified;
+		}
+		else
+		{
+			CourseDetails newDetails = new CourseDetails
+			{
+				StartDate = courses.StartDate,
+				Duration = courses.Duration,
+				SkillLevel = courses.SkillLevel,
+				Language = courses.Language,
+				StudentCount = courses.StudentCount,
+				Assesment = courses.Assesment,
+				Fee = courses.Fee
+			};
+			course.Details = newDetails;
+			_context.courseDetails.Add(newDetails);
+		}
 
-        TempData["Success"] = "Course Updated Successfully";
+		_context.Entry(course).State = EntityState.Modified;
+		await _context.SaveChangesAsync();
 
-        return RedirectToAction(nameof(Index));
-    }
+		TempData["Success"] = "Course Updated Successfully";
+
+		return RedirectToAction(nameof(Index));
+	}
+}
+
 
