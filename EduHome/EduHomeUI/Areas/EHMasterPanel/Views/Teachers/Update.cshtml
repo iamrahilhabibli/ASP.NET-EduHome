@@ -1,0 +1,133 @@
+﻿@using EduHomeUI.ViewModels
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model TeachersViewModel
+
+<form asp-controller="Teachers" asp-action="Update" method="post">
+    <div class="row mb-4">
+        <label asp-for="Name" class="col-sm-3 col-form-label"></label>
+        <div class="col-sm-9">
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <label asp-for="Position" class="col-sm-3 col-form-label"></label>
+        <div class="col-sm-9">
+            <input asp-for="Position" class="form-control" />
+            <span asp-validation-for="Position" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <label asp-for="ImagePath" class="col-sm-3 col-form-label"></label>
+        <div class="col-sm-9">
+            <input asp-for="ImagePath" class="form-control" />
+            <span asp-validation-for="ImagePath" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <label asp-for="Description" class="col-sm-3 col-form-label"></label>
+        <div class="col-sm-9">
+            <input asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <label asp-for="Degree" class="col-sm-3 col-form-label"></label>
+        <div class="col-sm-9">
+            <input asp-for="Degree" class="form-control" />
+            <span asp-validation-for="Degree" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <label asp-for="ExperienceYears" class="col-sm-3 col-form-label"></label>
+        <div class="col-sm-9">
+            <input asp-for="ExperienceYears" class="form-control" />
+            <span asp-validation-for="ExperienceYears" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <label asp-for="Hobbies" class="col-sm-3 col-form-label"></label>
+        <div class="col-sm-9">
+            <input asp-for="Hobbies" class="form-control" />
+            <span asp-validation-for="Hobbies" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <label asp-for="Faculty" class="col-sm-3 col-form-label"></label>
+        <div class="col-sm-9">
+            <input asp-for="Faculty" class="form-control" />
+            <span asp-validation-for="Faculty" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <label asp-for="Email" class="col-sm-3 col-form-label"></label>
+        <div class="col-sm-9">
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <label asp-for="PhoneNumber" class="col-sm-3 col-form-label"></label>
+        <div class="col-sm-9">
+            <input asp-for="PhoneNumber" class="form-control" />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <label asp-for="SkypeAddress" class="col-sm-3 col-form-label"></label>
+        <div class="col-sm-9">
+            <input asp-for="SkypeAddress" class="form-control" />
+            <span asp-validation-for="SkypeAddress" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <label asp-for="LanguageSkills" class="col-sm-3 col-form-label"></label>
+        <div class="col-sm-9">
+            <input asp-for="LanguageSkills" class="form-control" />
+            <span asp-validation-for="LanguageSkills" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <label asp-for="TeamLeaderSkills" class="col-sm-3 col-form-label"></label>
+        <div class="col-sm-9">
+            <input asp-for="TeamLeaderSkills" class="form-control" />
+            <span asp-validation-for="TeamLeaderSkills" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <label asp-for="DevelopmentSkills" class="col-sm-3 col-form-label"></label>
+        <div class="col-sm-9">
+            <input asp-for="DevelopmentSkills" class="form-control" />
+            <span asp-validation-for="DevelopmentSkills" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <label asp-for="Design" class="col-sm-3 col-form-label"></label>
+        <div class="col-sm-9">
+            <input asp-for="Design" class="form-control" />
+            <span asp-validation-for="Design" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <label asp-for="Innovation" class="col-sm-3 col-form-label"></label>
+        <div class="col-sm-9">
+            <input asp-for="Innovation" class="form-control" />
+            <span asp-validation-for="Innovation" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <label asp-for="Communication" class="col-sm-3 col-form-label"></label>
+        <div class="col-sm-9">
+            <input asp-for="Communication" class="form-control" />
+            <span asp-validation-for="Communication" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row justify-content-end">
+        <div class="col-sm-9">
+            <div>
+                <button type="submit" class="btn btn-primary w-md">Update</button>
+            </div>
+        </div>
+    </div>
+</form>
