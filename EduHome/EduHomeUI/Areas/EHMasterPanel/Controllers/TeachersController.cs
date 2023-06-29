@@ -98,5 +98,88 @@ namespace EduHomeUI.Areas.EHMasterPanel.Controllers
 
 			return RedirectToAction(nameof(Index));
 		}
-	}
+
+        public async Task<IActionResult> Update(int id)
+        {
+            Teachers teacher = await _context.teachers.Include(t => t.TeacherDetails).FirstOrDefaultAsync(t => t.Id == id);
+            if (teacher == null)
+            {
+                return NotFound();
+            }
+
+            TeachersViewModel teacherViewModel = _mapper.Map<TeachersViewModel>(teacher);
+            return View(teacherViewModel);
+        }
+
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> Update(int id, TeachersViewModel updatedTeacher)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(updatedTeacher);
+            }
+
+            Teachers teacher = await _context.teachers.Include(t => t.TeacherDetails).FirstOrDefaultAsync(t => t.Id == id);
+            if (teacher == null)
+            {
+                return NotFound();
+            }
+
+            teacher.Name = updatedTeacher.Name;
+            teacher.Position = updatedTeacher.Position;
+            teacher.ImagePath = updatedTeacher.ImagePath;
+
+            if (teacher.TeacherDetails != null)
+            {
+                teacher.TeacherDetails.Description = updatedTeacher.Description;
+                teacher.TeacherDetails.Degree = updatedTeacher.Degree;
+                teacher.TeacherDetails.ExperienceYears = updatedTeacher.ExperienceYears;
+                teacher.TeacherDetails.Hobbies = updatedTeacher.Hobbies;
+                teacher.TeacherDetails.Faculty = updatedTeacher.Faculty;
+                teacher.TeacherDetails.PhoneNumber = updatedTeacher.PhoneNumber;
+                teacher.TeacherDetails.Email = updatedTeacher.Email;
+                teacher.TeacherDetails.SkypeAddress = updatedTeacher.SkypeAddress;
+                teacher.TeacherDetails.LanguageSkills = updatedTeacher.LanguageSkills;
+                teacher.TeacherDetails.TeamLeaderSkills = updatedTeacher.TeamLeaderSkills;
+                teacher.TeacherDetails.DevelopmentSkills = updatedTeacher.DevelopmentSkills;
+                teacher.TeacherDetails.Design = updatedTeacher.Design;
+                teacher.TeacherDetails.Innovation = updatedTeacher.Innovation;
+                teacher.TeacherDetails.Communication = updatedTeacher.Communication;
+
+                _context.Entry(teacher.TeacherDetails).State = EntityState.Modified;
+            }
+            else
+            {
+                TeacherDetails newDetails = new TeacherDetails
+                {
+                    Description = updatedTeacher.Description,
+                    Degree = updatedTeacher.Degree,
+                    ExperienceYears = updatedTeacher.ExperienceYears,
+                    Hobbies = updatedTeacher.Hobbies,
+                    Faculty = updatedTeacher.Faculty,
+                    PhoneNumber = updatedTeacher.PhoneNumber,
+                    Email = updatedTeacher.Email,
+                    SkypeAddress = updatedTeacher.SkypeAddress,
+                    LanguageSkills = updatedTeacher.LanguageSkills,
+                    TeamLeaderSkills = updatedTeacher.TeamLeaderSkills,
+                    DevelopmentSkills = updatedTeacher.DevelopmentSkills,
+                    Design = updatedTeacher.Design,
+                    Innovation = updatedTeacher.Innovation,
+                    Communication = updatedTeacher.Communication
+                };
+
+                teacher.TeacherDetails = newDetails;
+                _context.teachersDetails.Add(newDetails);
+            }
+
+            _context.Entry(teacher).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            TempData["Success"] = "Teacher Updated Successfully";
+
+            return RedirectToAction(nameof(Index));
+        }
+
+    }
 }
