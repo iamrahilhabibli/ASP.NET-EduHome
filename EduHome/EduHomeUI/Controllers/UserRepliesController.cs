@@ -28,6 +28,7 @@ public class UserRepliesController : Controller
 		return View();
 	}
 	[HttpPost]
+    [AutoValidateAntiforgeryToken]
     public IActionResult Create(UserReplyVM reply)
     {
         UserReplies userReplies = _mapper.Map<UserReplies>(reply);
