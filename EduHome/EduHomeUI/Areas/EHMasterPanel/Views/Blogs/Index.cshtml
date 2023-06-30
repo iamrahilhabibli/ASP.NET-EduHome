@@ -1,0 +1,58 @@
+﻿@using EduHome.Core.Entities;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<Blogs>
+<partial name="_Notification" />
+@{
+	ViewData["Title"] = "Index";
+	int count = 1;
+}
+<div class="container-fluid">
+
+	<!-- start page title -->
+	<div class="row">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Sliders</h4>
+				<a asp-controller="Blogs" asp-action="Create" class="btn btn-primary mb-4">Create New Blog</a>
+				<div class="table-responsive">
+					<table class="table table-dark mb-0">
+
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>AuthorName</th>
+								<th>CommentCount</th>
+								<th>Title</th>
+								<th>BlogText</th>
+								<th>ImagePath</th>
+								<th>Date</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (var blogs in Model)
+							{
+								<tr>
+									<th scope="row">@count</th>
+									<td>@blogs.AuthorName</td>
+									<td>@blogs.CommentCount</td>
+									<td>@blogs.Title</td>
+									<td>@blogs.BlogText</td>
+									<td> <img src="/@blogs.ImagePath" style="width:100px" /> </td>
+									<td>@blogs.Date.ToString("MMMM,dd,yyyy")</td>
+									<td>
+										<a  class="btn btn-warning mb-4">	<i class="bi bi-pencil-square"></i></a>
+										<a  class="btn btn-danger mb-4"><i class="bi bi-trash-fill"></i></a>
+									</td>
+								</tr>
+								count++;
+							}
+
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

@@ -10,6 +10,7 @@ namespace EduHome.Core.Entities
         public int CommentCount { get; set; }
         public string Title { get; set; }
         public string BlogText { get; set; }
+        public  string ImagePath { get; set; }
 
     }
 }
