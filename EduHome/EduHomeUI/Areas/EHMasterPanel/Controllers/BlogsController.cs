@@ -77,7 +77,6 @@ public class BlogsController : Controller
 		}
 		return View(blogs);
 	}
-
 	[HttpPost]
 	[ValidateAntiForgeryToken]
 	public async Task<IActionResult> Update(int Id, Blogs blog)
@@ -86,17 +85,23 @@ public class BlogsController : Controller
 		{
 			return BadRequest();
 		}
+
 		if (!ModelState.IsValid)
 		{
 			return View(blog);
 		}
-		Blogs? blogDb = await _context.blogs.FirstOrDefaultAsync(b => b.Id == Id);
+
+		Blogs blogDb = await _context.blogs.FirstOrDefaultAsync(b => b.Id == Id);
 		if (blogDb == null)
 		{
 			return NotFound();
 		}
-		_context.Entry(blog).State = EntityState.Modified;
+
+		_context.Entry(blogDb).CurrentValues.SetValues(blog);
 		await _context.SaveChangesAsync();
+
+		TempData["Success"] = "Course Updated Successfully";
 		return RedirectToAction(nameof(Index));
 	}
+
 }
