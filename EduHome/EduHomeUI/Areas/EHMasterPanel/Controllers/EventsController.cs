@@ -24,6 +24,7 @@ public class EventsController : Controller
 	}
 	public IActionResult Create()
 	{
+		ViewData["Speakers"] = GetSpeakerSelectList();
 		return View();
 	}
 
@@ -33,6 +34,7 @@ public class EventsController : Controller
 	{
 		if (!ModelState.IsValid)
 		{
+			ViewData["Speakers"] = GetSpeakerSelectList();
 			return View(events);
 		}
 
@@ -140,18 +142,17 @@ public class EventsController : Controller
 
 		return RedirectToAction(nameof(Index));
 	}
-    public SelectList GetSpeakerSelectList()
-    {
-        var speakers = _context.speakers.ToList();
-        var speakerList = speakers.Select(s => new SelectListItem
-        {
-            Value = s.Id.ToString(),
-            Text = s.Name
-        }).ToList();
+	public SelectList GetSpeakerSelectList()
+	{
+		var speakers = _context.speakers.ToList();
+		var speakerList = speakers.Select(s => new SelectListItem
+		{
+			Value = s.Id.ToString(),
+			Text = s.Name
+		}).ToList();
 
-        return new SelectList(speakerList, "Value", "Text");
-    }
-
+		return new SelectList(speakerList, "Value", "Text");
+	}
 }
 
 

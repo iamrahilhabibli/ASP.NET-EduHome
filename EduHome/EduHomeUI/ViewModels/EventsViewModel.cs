@@ -11,5 +11,4 @@ public class EventsViewModel
     public string Venue { get; set; }
     public List<SpeakersViewModel> Speakers { get; set; }
 
-
 }
