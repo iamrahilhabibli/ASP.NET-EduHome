@@ -3,6 +3,7 @@ using EduHome.DataAccess.Contexts;
 using EduHomeUI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata;
 
 namespace EduHomeUI.Areas.EHMasterPanel.Controllers;
 [Area("EHMasterPanel")]
@@ -75,5 +76,27 @@ public class BlogsController : Controller
 			return NotFound();
 		}
 		return View(blogs);
+	}
+
+	[HttpPost]
+	[ValidateAntiForgeryToken]
+	public async Task<IActionResult> Update(int Id, Blogs blog)
+	{
+		if (Id != blog.Id)
+		{
+			return BadRequest();
+		}
+		if (!ModelState.IsValid)
+		{
+			return View(blog);
+		}
+		Blogs? blogDb = await _context.blogs.FirstOrDefaultAsync(b => b.Id == Id);
+		if (blogDb == null)
+		{
+			return NotFound();
+		}
+		_context.Entry(blog).State = EntityState.Modified;
+		await _context.SaveChangesAsync();
+		return RedirectToAction(nameof(Index));
 	}
 }
