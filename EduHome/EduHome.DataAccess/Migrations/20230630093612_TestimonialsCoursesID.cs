@@ -4,7 +4,7 @@
 
 namespace EduHome.DataAccess.Migrations
 {
-    public partial class TestimonialsCOurseID : Migration
+    public partial class TestimonialsCoursesID : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

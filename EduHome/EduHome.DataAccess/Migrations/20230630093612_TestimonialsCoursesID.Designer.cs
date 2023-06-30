@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EduHome.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230630090259_TestimonialsCOurseID")]
-    partial class TestimonialsCOurseID
+    [Migration("20230630093612_TestimonialsCoursesID")]
+    partial class TestimonialsCoursesID
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
