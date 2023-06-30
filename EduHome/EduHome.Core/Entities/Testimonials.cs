@@ -12,9 +12,9 @@ namespace EduHome.Core.Entities
 		public string Description { get; set; }
 		public string Occupation { get; set; }
 
+		[ForeignKey("Courses")]
 		public int CourseId { get; set; }
 
-		[ForeignKey("CourseId")]
 		public Courses Courses { get; set; }
 	}
 }
