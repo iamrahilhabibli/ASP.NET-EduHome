@@ -16,4 +16,5 @@ public class CourseDetails:IEntity
     public int StudentCount { get; set; }
     public string Assesment { get; set; }
     public decimal Fee { get; set; }
+
 }

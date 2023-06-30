@@ -25,23 +25,36 @@ public class EventsController : Controller
 	{
 		return View();
 	}
-	[HttpPost]
-	[AutoValidateAntiforgeryToken]
-	public async Task<IActionResult> Create(EventsViewModel events)
-	{
-		if (!ModelState.IsValid)
+
+    [HttpPost]
+    [AutoValidateAntiforgeryToken]
+    public async Task<IActionResult> Create(EventsViewModel events)
+    {
+        if (!ModelState.IsValid)
+        {
+            return View(events);
+        }
+
+        Events newEvent = _mapper.Map<Events>(events);
+
+		EventDetails details = new EventDetails
 		{
-			return View();
-		}
+			Venue = events.Venue,
+			Description = events.Description,
+		};
 
-		Events newEvent = _mapper.Map<Events>(events);
-		await _context.events.AddAsync(newEvent);
-		await _context.SaveChangesAsync();
-		TempData["Success"] = "Event Created Successfully";
+		newEvent.EventDetails = details;
 
-		return RedirectToAction(nameof(Index));
-	}
-	public async Task<IActionResult> Delete(int Id)
+        await _context.events.AddAsync(newEvent);
+        await _context.SaveChangesAsync();
+
+        TempData["Success"] = "Event Created Successfully";
+
+        return RedirectToAction(nameof(Index));
+    }
+
+
+    public async Task<IActionResult> Delete(int Id)
 	{
 		Events newEvent = await _context.events.FindAsync(Id);
 		if (newEvent == null)

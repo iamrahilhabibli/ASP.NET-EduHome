@@ -12,8 +12,13 @@ public class TestimonialsController : Controller
     {
         _context = context;
     }
-    public async Task<IActionResult> IndexAsync()
+    public async Task<IActionResult> Index()
     {
         return View(await _context.testimonials.ToListAsync());
     }
+    public IActionResult Create()
+    {
+        return View();
+    }
+    
 }
