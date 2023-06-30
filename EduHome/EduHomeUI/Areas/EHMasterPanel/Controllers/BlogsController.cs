@@ -1,5 +1,6 @@
 ﻿using EduHome.Core.Entities;
 using EduHome.DataAccess.Contexts;
+using EduHomeUI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -66,5 +67,13 @@ public class BlogsController : Controller
 
 		return RedirectToAction(nameof(Index));
 	}
-
+	public async Task<IActionResult> Update(int Id)
+	{
+		Blogs blogs = await _context.blogs.FindAsync(Id);
+		if (blogs == null)
+		{
+			return NotFound();
+		}
+		return View(blogs);
+	}
 }
