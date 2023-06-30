@@ -209,6 +209,36 @@ namespace EduHome.DataAccess.Migrations
                     b.ToTable("notices");
                 });
 
+            modelBuilder.Entity("EduHome.Core.Entities.Speakers", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("CompanyName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("EventDetailsId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Position")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventDetailsId");
+
+                    b.ToTable("speakers");
+                });
+
             modelBuilder.Entity("EduHome.Core.Entities.TeacherDetails", b =>
                 {
                     b.Property<int>("Id")
@@ -436,6 +466,13 @@ namespace EduHome.DataAccess.Migrations
                     b.Navigation("Courses");
                 });
 
+            modelBuilder.Entity("EduHome.Core.Entities.Speakers", b =>
+                {
+                    b.HasOne("EventDetails", null)
+                        .WithMany("Speakers")
+                        .HasForeignKey("EventDetailsId");
+                });
+
             modelBuilder.Entity("EduHome.Core.Entities.TeacherDetails", b =>
                 {
                     b.HasOne("EduHome.Core.Entities.Teachers", "Teacher")
@@ -487,6 +524,11 @@ namespace EduHome.DataAccess.Migrations
                 {
                     b.Navigation("TeacherDetails")
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("EventDetails", b =>
+                {
+                    b.Navigation("Speakers");
                 });
 #pragma warning restore 612, 618
         }

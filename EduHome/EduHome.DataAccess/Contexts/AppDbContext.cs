@@ -21,5 +21,6 @@ namespace EduHome.DataAccess.Contexts
         public DbSet<Users> users { get; set; }
 
         public DbSet<Blogs> blogs { get; set; }
+        public DbSet<Speakers> speakers { get; set; }
     }
 }

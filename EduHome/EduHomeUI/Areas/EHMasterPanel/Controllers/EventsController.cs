@@ -3,6 +3,7 @@ using EduHome.Core.Entities;
 using EduHome.DataAccess.Contexts;
 using EduHomeUI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace EduHomeUI.Areas.EHMasterPanel.Controllers;
@@ -80,66 +81,6 @@ public class EventsController : Controller
 		return RedirectToAction(nameof(Index));
 	}
 
-	//    public async Task<IActionResult> Update(int id)
-	//    {
-	//        Events newEvent = await _context.events.FindAsync(id);
-	//        if (newEvent == null)
-	//        {
-	//            return NotFound();
-	//        }
-
-	//        EventsViewModel eventViewModel = _mapper.Map<EventsViewModel>(newEvent);
-	//        return View(eventViewModel);
-	//    }
-
-	//    [HttpPost]
-	//    [ValidateAntiForgeryToken]
-	//    public async Task<IActionResult> Update(int id, EventsViewModel events)
-	//    {
-	//        if (!ModelState.IsValid)
-	//        {
-	//            return View(events);
-	//        }
-
-	//        Events newEvent = await _context.events.Include(e => e.EventDetails).FirstOrDefaultAsync(e => e.Id == id);
-	//        if (newEvent == null)
-	//        {
-	//            return NotFound();
-	//        }
-
-	//        newEvent.Title = events.Title;
-	//        newEvent.Date = events.Date;
-	//        newEvent.StartTime = events.StartTime;
-	//        newEvent.EndTime = events.EndTime;
-	//        newEvent.Location = events.Location;
-
-	//        if (newEvent.EventDetails != null)
-	//        {
-	//            newEvent.EventDetails.Venue = events.Venue;
-	//            newEvent.EventDetails.Description = events.Description;
-
-	//            _context.Entry(newEvent.EventDetails).State = EntityState.Modified;
-	//        }
-	//        else
-	//        {
-	//            EventDetails newDetails = new EventDetails
-	//            {
-	//                Venue = events.Venue,
-	//                Description = events.Description
-	//            };
-	//            newEvent.EventDetails = newDetails;
-	//            _context.eventDetails.Add(newDetails);
-	//        }
-
-	//        _context.Entry(newEvent).State = EntityState.Modified;
-	//        await _context.SaveChangesAsync();
-
-	//        TempData["Success"] = "Event Updated Successfully";
-
-	//        return RedirectToAction(nameof(Index));
-	//    }
-
-	//
 	public async Task<IActionResult> Update(int id)
 	{
 		Events existingEvent = await _context.events.Include(e => e.EventDetails).FirstOrDefaultAsync(e => e.Id == id);
@@ -199,6 +140,17 @@ public class EventsController : Controller
 
 		return RedirectToAction(nameof(Index));
 	}
+    public SelectList GetSpeakerSelectList()
+    {
+        var speakers = _context.speakers.ToList();
+        var speakerList = speakers.Select(s => new SelectListItem
+        {
+            Value = s.Id.ToString(),
+            Text = s.Name
+        }).ToList();
+
+        return new SelectList(speakerList, "Value", "Text");
+    }
 
 }
 

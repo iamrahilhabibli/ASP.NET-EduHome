@@ -10,4 +10,5 @@ public class EventDetails : IEntity
     [ForeignKey("Events")]
 	public int EventId { get; set; }
 	public Events Event { get; set; }
+    public ICollection<Speakers?> Speakers { get; set; }
 }

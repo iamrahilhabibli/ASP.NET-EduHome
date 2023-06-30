@@ -9,4 +9,7 @@ public class EventsViewModel
     public string Location { get; set; }
     public string Description { get; set; }
     public string Venue { get; set; }
+    public List<SpeakersViewModel> Speakers { get; set; }
+
+
 }
