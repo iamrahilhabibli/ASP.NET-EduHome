@@ -42,7 +42,7 @@
 									<td>@blogs.Date.ToString("MMMM,dd,yyyy")</td>
 									<td>
 										<a  class="btn btn-warning mb-4">	<i class="bi bi-pencil-square"></i></a>
-										<a  class="btn btn-danger mb-4"><i class="bi bi-trash-fill"></i></a>
+										<a asp-action="Delete" asp-route-id="@blogs.Id"  class="btn btn-danger mb-4"><i class="bi bi-trash-fill"></i></a>
 									</td>
 								</tr>
 								count++;

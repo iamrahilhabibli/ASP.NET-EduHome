@@ -39,5 +39,32 @@ public class BlogsController : Controller
 		return RedirectToAction(nameof(Index));
 
 	}
+	public async Task<IActionResult> Delete(int Id)
+	{
+		Blogs blogs = await _context.blogs.FindAsync(Id);
+		if (blogs == null)
+		{
+			return NotFound();
+		}
+
+		return View(blogs);
+	}
+	[HttpPost]
+	[ActionName("Delete")]
+	[AutoValidateAntiforgeryToken]
+	public async Task<IActionResult> DeletePost(int Id)
+	{
+		Blogs blogs = await _context.blogs.FindAsync(Id);
+		if (blogs == null)
+		{
+			return NotFound();
+		}
+
+		_context.blogs.Remove(blogs);
+		await _context.SaveChangesAsync();
+		TempData["Success"] = "Blog Deleted Successfully";
+
+		return RedirectToAction(nameof(Index));
+	}
 
 }
