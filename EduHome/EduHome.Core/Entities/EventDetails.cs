@@ -5,7 +5,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 public class EventDetails : IEntity
 {
 	public int Id { get; set; }
-    public string Title { get; set; }
     public string Description { get; set; }
     public string Venue { get; set; }
     [ForeignKey("Events")]
