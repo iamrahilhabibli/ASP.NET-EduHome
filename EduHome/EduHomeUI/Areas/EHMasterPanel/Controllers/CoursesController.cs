@@ -122,7 +122,6 @@ public class CoursesController : Controller
 		course.Description = courses.Description;
 		course.ImagePath = courses.ImagePath;
 
-		// Update the CourseDetails properties
 		if (course.Details != null)
 		{
 			course.Details.StartDate = courses.StartDate;
