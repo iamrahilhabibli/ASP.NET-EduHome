@@ -1,4 +1,5 @@
-﻿using EduHome.DataAccess.Contexts;
+﻿using EduHome.Core.Entities;
+using EduHome.DataAccess.Contexts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,4 +16,28 @@ public class BlogsController : Controller
 	{
 		return View(await _context.blogs.ToListAsync());
 	}
+	public IActionResult Create()
+	{
+		return View();
+	}
+	[HttpPost]
+	[AutoValidateAntiforgeryToken]
+	public async Task<IActionResult> Create(Blogs blog)
+	{
+		if(!ModelState.IsValid)
+		{
+			return View();
+		}
+		blog.Date = DateTime.Now;
+		blog.CommentCount = 0;
+
+		await _context.blogs.AddAsync(blog);
+		await _context.SaveChangesAsync();
+
+		TempData["Success"] = "Blog Created Successfully";
+
+		return RedirectToAction(nameof(Index));
+
+	}
+
 }

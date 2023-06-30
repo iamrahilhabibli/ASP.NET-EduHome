@@ -1,0 +1,68 @@
+﻿@using EduHome.Core.Entities;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model Blogs
+<div class="col-xl-6">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title mb-4">Course Create Form</h4>
+            <form asp-controller="Blogs" asp-action="Create" method="post">
+                <div class="row mb-4">
+                    <label asp-for="AuthorName" class="col-sm-3 col-form-label"></label>
+                    <div class="col-sm-9">
+                        <input asp-for="AuthorName" class="form-control" />
+                        <span asp-validation-for="AuthorName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <label asp-for="CommentCount" class="col-sm-3 col-form-label"></label>
+                    <div class="col-sm-9">
+                        <input asp-for="CommentCount" class="form-control" disabled />
+                        <span asp-validation-for="CommentCount" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <label asp-for="Title" class="col-sm-3 col-form-label"></label>
+                    <div class="col-sm-9">
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <label asp-for="BlogText" class="col-sm-3 col-form-label"></label>
+                    <div class="col-sm-9">
+                        <input asp-for="BlogText" class="form-control" />
+                        <span asp-validation-for="BlogText" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <label asp-for="ImagePath" class="col-sm-3 col-form-label"></label>
+                    <div class="col-sm-9">
+                        <input asp-for="ImagePath" class="form-control" />
+                        <span asp-validation-for="ImagePath" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <label asp-for="Date" class="col-sm-3 col-form-label"></label>
+                    <div class="col-sm-9">
+                        <input asp-for="Date" class="form-control" disabled/>
+                        <span asp-validation-for="Date" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="row justify-content-end">
+                    <div class="col-sm-9">
+                        <div>
+                            <button type="submit" class="btn btn-primary w-md">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+
+        </div>
+        <!-- end card body -->
+    </div>
+    <!-- end card -->
+</div>
