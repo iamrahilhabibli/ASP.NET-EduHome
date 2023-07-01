@@ -9,17 +9,17 @@ namespace EduHomeUI.Areas.EHMasterPanel.Controllers;
 [Area("EHMasterPanel")]
 public class TestimonialsController : Controller
 {
-    private readonly AppDbContext _context;
+	private readonly AppDbContext _context;
 
-    public TestimonialsController(AppDbContext context)
-    {
-        _context = context;
-    }
-   public async Task<IActionResult> Index()
-    {
-        var testimonials = await _context.testimonials.Include(t => t.Courses).ToListAsync();
-        return View(testimonials);
-    }
+	public TestimonialsController(AppDbContext context)
+	{
+		_context = context;
+	}
+	public async Task<IActionResult> Index()
+	{
+		var testimonials = await _context.testimonials.Include(t => t.Courses).ToListAsync();
+		return View(testimonials);
+	}
 	[HttpGet]
 	public IActionResult Create()
 	{
@@ -43,18 +43,16 @@ public class TestimonialsController : Controller
 	{
 		if (ModelState.IsValid)
 		{
-			// Find the selected course from the database using the selected course name
-			var selectedCourse = _context.Courses.FirstOrDefault(c => c.Name == viewModel.SelectedCourseName);
+
+			var selectedCourse = _context.courses.FirstOrDefault(c => c.Name == viewModel.SelectedCourseName);
 
 			if (selectedCourse == null)
 			{
-				// Handle the case where the selected course does not exist in the database
+
 				ModelState.AddModelError("SelectedCourseName", "Invalid course selected.");
 				viewModel.AvailableCourses = GetAvailableCourses();
 				return View(viewModel);
 			}
-
-			// Map the view model to the entity model
 			var testimonial = new Testimonials
 			{
 				Name = viewModel.Name,
@@ -62,15 +60,30 @@ public class TestimonialsController : Controller
 				ImagePath = viewModel.ImagePath,
 				Description = viewModel.Description,
 				Occupation = viewModel.Occupation,
-				CourseId = selectedCourse.Id, // Assign the CourseId
-				Courses = selectedCourse // Assign the Courses navigation property
+				CourseId = selectedCourse.Id, 
+				Courses = selectedCourse 
 			};
 
-			// Save the testimonial to the database
-			_context.Testimonials.Add(testimonial);
+			_context.testimonials.Add(testimonial);
 			_context.SaveChanges();
 
-			// Redirect to a success page or perform other
-
-
+			TempData["Success"] = "Course Created Successfully";
+			return RedirectToAction(nameof(Index));
 		}
+		viewModel.AvailableCourses = GetAvailableCourses();
+		return View(viewModel);
+	}
+	private List<SelectListItem> GetAvailableCourses()
+	{
+		var courses = _context.courses.ToList();
+
+		var availableCourses = courses.Select(c => new SelectListItem
+		{
+			Value = c.Id.ToString(),
+			Text = c.Name
+		}).ToList();
+
+		return availableCourses;
+	}
+
+}
