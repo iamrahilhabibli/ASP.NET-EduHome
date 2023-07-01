@@ -27,7 +27,6 @@ public class EventsController : Controller
 		ViewData["Speakers"] = GetSpeakerSelectList();
 		return View();
 	}
-
 	[HttpPost]
 	[AutoValidateAntiforgeryToken]
 	public async Task<IActionResult> Create(EventsViewModel events)
@@ -44,6 +43,7 @@ public class EventsController : Controller
 		{
 			Venue = events.Venue,
 			Description = events.Description,
+			Speakers = events.Speakers
 		};
 
 		newEvent.EventDetails = details;
@@ -55,6 +55,9 @@ public class EventsController : Controller
 
 		return RedirectToAction(nameof(Index));
 	}
+
+
+
 
 
 	public async Task<IActionResult> Delete(int Id)

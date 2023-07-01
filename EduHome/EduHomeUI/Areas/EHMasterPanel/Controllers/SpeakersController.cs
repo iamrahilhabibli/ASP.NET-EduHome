@@ -27,7 +27,7 @@ namespace EduHomeUI.Areas.EHMasterPanel.Controllers
 		}
 		[HttpPost]
 		[AutoValidateAntiforgeryToken]
-		public async Task<IActionResult> Create(SpeakersViewModel speakers)
+		public async Task<IActionResult> Create(Speakers speakers)
 		{
 			if (!ModelState.IsValid)
 			{
