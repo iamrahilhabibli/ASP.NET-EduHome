@@ -6,6 +6,7 @@
         <div class="card-body">
             <h4 class="card-title mb-4">Testimonials Create Form</h4>
             <form asp-controller="Testimonials" asp-action="Create" method="post">
+               @Html.AntiForgeryToken()
                 <div class="row mb-4">
                     <label asp-for="SelectedCourseName" class="col-sm-3 col-form-label"></label>
                     <div class="col-sm-9">
@@ -13,7 +14,6 @@
                         <span asp-validation-for="SelectedCourseName" class="text-danger"></span>
                     </div>
                 </div>
-
                 <div class="row mb-4">
                     <label asp-for="Name" class="col-sm-3 col-form-label"></label>
                     <div class="col-sm-9">

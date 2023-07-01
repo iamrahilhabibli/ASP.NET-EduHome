@@ -20,16 +20,9 @@ public class TestimonialsController : Controller
 		var testimonials = await _context.testimonials.Include(t => t.Courses).ToListAsync();
 		return View(testimonials);
 	}
-	[HttpGet]
 	public IActionResult Create()
 	{
-		var courses = _context.courses.ToList();
-
-		var availableCourses = courses.Select(c => new SelectListItem
-		{
-			Value = c.Id.ToString(),
-			Text = c.Name
-		}).ToList();
+		var availableCourses = GetAvailableCourses();
 
 		var viewModel = new TestimonialsViewModel
 		{
@@ -38,7 +31,9 @@ public class TestimonialsController : Controller
 
 		return View(viewModel);
 	}
+
 	[HttpPost]
+	[ValidateAntiForgeryToken]
 	public IActionResult Create(TestimonialsViewModel viewModel)
 	{
 		if (ModelState.IsValid)
