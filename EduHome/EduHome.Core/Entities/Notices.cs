@@ -2,11 +2,18 @@
 
 namespace EduHome.Core.Entities;
 
-public class Notices:IEntity
+using System;
+using System.ComponentModel.DataAnnotations;
+
+public class Notices : IEntity
 {
     public int Id { get; set; }
-    public DateTime? Date { get; set; } = DateTime.MinValue;
+
+    [DisplayFormat(DataFormatString = "{0:dd MMMM yyyy}")]
+    public DateTime? Date { get; set; }
+
     public string Description { get; set; }
     public bool isLeft { get; set; }
     public string? Title { get; set; }
 }
+

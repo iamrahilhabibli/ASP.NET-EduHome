@@ -22,12 +22,22 @@ public class CoursesController : Controller
 		};
 		return View(courseVM);
 	}
-	public async Task<IActionResult> Details()
-	{
-		CourseVM courseVM = new()
-		{
-			CourseDetails = await _context.courseDetails.ToListAsync(),
-		};
-		return View(courseVM);
-	}
+    public async Task<IActionResult> Details(int id)
+    {
+        Courses course = await _context.courses.FindAsync(id);
+
+        if (course == null)
+        {
+            return NotFound();
+        }
+
+        CourseVM courseVM = new CourseVM
+        {
+            Courses = new List<Courses> { course },
+            CourseDetails = await _context.courseDetails.ToListAsync()
+        };
+
+        return View(courseVM);
+    }
+
 }
