@@ -23,11 +23,11 @@ public class UserRepliesController : Controller
         return View(objCategoryList);
   
     }
-	public IActionResult Create()
-	{
-		return View();
-	}
-	[HttpPost]
+    public IActionResult Create()
+    {
+        return View();
+    }
+    [HttpPost]
     [AutoValidateAntiforgeryToken]
     public IActionResult Create(UserReplyVM reply)
     {
