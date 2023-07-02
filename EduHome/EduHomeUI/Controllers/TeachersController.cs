@@ -31,12 +31,14 @@ public class TeachersController : Controller
             return NotFound();
         }
 
-        TeachersVM teachersVM = new TeachersVM
+        TeachersVM teacherVM = new TeachersVM
         {
-            Teachers = new List<Teachers> { teacher }
+            Teachers = new List<Teachers> { teacher },
+            TeachersDetails = await _context.teachersDetails.ToListAsync()
         };
 
-        return View(teachersVM);
+        return View(teacherVM);
     }
+
 
 }

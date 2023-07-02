@@ -23,8 +23,8 @@
 <div class="teacher-details-area pt-150 pb-60">
     @foreach (var teacher in Model.Teachers)
     {
-        var teacherDetails = teacher.TeacherDetails;
-        if (teacherDetails != null && teacherDetails.TeacherId == teacher.Id)
+        var teacherDetails = Model.TeachersDetails.FirstOrDefault(td => td.TeacherId == teacher.Id);
+        if (teacherDetails != null)
         {
             <div class="container">
                 <div class="row">
@@ -137,6 +137,7 @@
         }
     }
 </div>
+
 
 <!-- Teacher End -->
 <!-- Subscribe Start -->
