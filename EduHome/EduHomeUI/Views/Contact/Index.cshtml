@@ -72,30 +72,35 @@
                 <div class="reply-area">
                     <h3>LEAVE A message</h3>
                     <p>I must explain to you how all this a mistaken idea of ncing great explorer of the rut the is lder of human happinescias unde omnis iste natus error sit volptatem </p>
+
+
                     <form id="contact-form" asp-controller="UserReplies" asp-action="Create" method="post">
                         <div class="row">
                             <div class="col-md-12">
                                 <p>Name</p>
-                                <input type="text" asp-for="Name" class="form-control" >
+                                <input type="text" asp-for="Name" class="form-control">
                                 <span asp-validation-for="Name" class="text-danger"></span>
                             </div>
                             <div class="col-md-12">
                                 <p>Email</p>
-                                <input type="text" asp-for="Email" class="form-control" >
+                                <input type="text" asp-for="Email" class="form-control">
                                 <span asp-validation-for="Email" class="text-danger"></span>
                             </div>
                             <div class="col-md-12">
                                 <p>Subject</p>
-                                <input type="text" asp-for="Subject" class="form-control" >
+                                <input type="text" asp-for="Subject" class="form-control">
                                 <span asp-validation-for="Subject" class="text-danger"></span>
                                 <p>Message</p>
-                                <textarea asp-for="Message" cols="15" rows="10" class="form-control" ></textarea>
+                                <textarea asp-for="Message" cols="15" rows="10" class="form-control"></textarea>
                                 <span asp-validation-for="Message" class="text-danger"></span>
                             </div>
                         </div>
                         <button class="reply-btn" type="submit"><span>Send Message</span></button>
                         <p class="form-message"></p>
                     </form>
+
+
+
                 </div>
             </div>
         </div>

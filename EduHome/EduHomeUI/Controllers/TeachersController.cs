@@ -22,8 +22,21 @@ public class TeachersController : Controller
         };
 		return View(teachersVM);
 	}
-    public IActionResult Details()
+    public async Task<IActionResult> Details(int id)
     {
-        return View();
+        Teachers teacher = await _context.teachers.FindAsync(id);
+
+        if (teacher == null)
+        {
+            return NotFound();
+        }
+
+        TeachersVM teachersVM = new TeachersVM
+        {
+            Teachers = new List<Teachers> { teacher }
+        };
+
+        return View(teachersVM);
     }
+
 }
