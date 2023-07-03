@@ -1,6 +1,9 @@
-﻿using EduHome.DataAccess.Contexts;
+﻿using EduHome.Core.Entities;
+using EduHome.DataAccess.Contexts;
+using EduHomeUI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata;
 using System.Threading.Tasks;
 
 namespace EduHomeUI.Controllers
@@ -14,21 +17,30 @@ namespace EduHomeUI.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var blogs = _context.blogs.OrderByDescending(b => b.Date).Take(9).ToList();
+            BlogsVM blogs = new()
+            {
+                blogs = await _context.blogs.ToListAsync()
+            };
             return View(blogs);
         }
         public async Task<IActionResult> Details(int id)
         {
-            var blog = await _context.blogs.FindAsync(id);
+            Blogs blog = await _context.blogs.FindAsync(id);
 
             if (blog == null)
             {
                 return NotFound();
             }
 
-            return View(blog);
+            BlogsVM blogsVM = new BlogsVM
+            {
+                blogs = new List<Blogs> { blog }
+            };
+
+            return View(blogsVM);
         }
+
     }
 }

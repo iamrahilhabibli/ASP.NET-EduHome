@@ -1,5 +1,6 @@
-﻿@using EduHome.Core.Entities;
-@model IEnumerable<Blogs>
+﻿
+@using EduHomeUI.ViewModels;
+@model BlogsVM
 <div class="banner-area-wrapper">
     <div class="banner-area text-center">
         <div class="container">
@@ -20,7 +21,7 @@
 <div class="blog-area pt-150 pb-150">
     <div class="container">
         <div class="row">
-            @foreach (var blog in Model.OrderByDescending(b => b.Id).Take(9))
+            @foreach (var blog in Model.blogs.OrderByDescending(b => b.Id).Take(9))
             {
                 <div class="col-lg-4 col-md-6">
                     <div class="single-blog mb-60">
