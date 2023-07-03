@@ -1,5 +1,9 @@
 ﻿using EduHome.DataAccess.Contexts;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
+using EduHomeUI.ViewModels;
+using EduHome.Core.Entities;
 
 namespace EduHomeUI.Controllers
 {
@@ -11,9 +15,33 @@ namespace EduHomeUI.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+
+        public async Task<IActionResult> Index()
         {
-            return View();
+            EventsVM eventsVM = new EventsVM
+            {
+               events = await _context.events.ToListAsync()
+            };
+
+            return View(eventsVM);
+        }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            var newEvent = await _context.events.FindAsync(id);
+
+            if (newEvent == null)
+            {
+                return NotFound();
+            }
+
+            EventsVM eventVM = new EventsVM
+            {
+                events = new List<Events> { newEvent },
+                eventsDetails = await _context.eventDetails.ToListAsync()
+            };
+
+            return View(eventVM);
         }
     }
 }

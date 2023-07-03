@@ -140,6 +140,10 @@ namespace EduHome.DataAccess.Migrations
                     b.Property<DateTime>("EndTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Location")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -221,7 +225,7 @@ namespace EduHome.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("EventDetailsId")
+                    b.Property<int>("EventDetailsId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -468,9 +472,13 @@ namespace EduHome.DataAccess.Migrations
 
             modelBuilder.Entity("EduHome.Core.Entities.Speakers", b =>
                 {
-                    b.HasOne("EventDetails", null)
+                    b.HasOne("EventDetails", "EventDetails")
                         .WithMany("Speakers")
-                        .HasForeignKey("EventDetailsId");
+                        .HasForeignKey("EventDetailsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("EventDetails");
                 });
 
             modelBuilder.Entity("EduHome.Core.Entities.TeacherDetails", b =>

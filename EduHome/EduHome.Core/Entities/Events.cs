@@ -10,5 +10,6 @@ public class Events:IEntity
     public DateTime StartTime { get; set; }
     public DateTime EndTime { get; set; }
     public string Location { get; set; }
+    public string ImagePath { get; set; }
 	public EventDetails EventDetails { get; set; }
 }
