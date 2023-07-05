@@ -9,6 +9,5 @@ namespace EduHome.Core.Entities
 		public string Description { get; set; }
 		public string ImagePath { get; set; }
 		public CourseDetails Details { get; set; }
-		public ICollection<Testimonials> Testimonials { get; set; }
-	}
+    }
 }

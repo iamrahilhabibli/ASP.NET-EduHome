@@ -25,21 +25,27 @@
                     @foreach (var eventDetail in Model.eventsDetails)
                     {
                         <div class="event-details-img">
-                           @* <img src="@eventDetail.ImagePath" alt="event-details">*@
-                            <div class="event-date">
-                                <h3>@eventDetail.Event.Date.Day <span>@eventDetail.Event.Date.ToString("MMM")</span></h3>
-                            </div>
+                            @*<img src="@eventDetail.ImagePath" alt="event-details">*@
+                            @if (eventDetail.Event != null)
+                            {
+                                <div class="event-date">
+                                    <h3>@eventDetail.Event.Date.Day <span>@eventDetail.Event.Date.ToString("MMM")</span></h3>
+                                </div>
+                            }
                         </div>
                         <div class="event-details-content">
-                            <h2>@eventDetail.Event.Title</h2>
-                            <ul>
-                                <li><span>time : </span>@eventDetail.Event.StartTime.ToString("h:mm tt") - @eventDetail.Event.EndTime.ToString("h:mm tt")</li>
-                                <li><span>venue : </span>@eventDetail.Venue</li>
-                            </ul>
+                            @if (eventDetail.Event != null)
+                            {
+                                <h2>@eventDetail.Event.Title</h2>
+                                <ul>
+                                    <li><span>time : </span>@eventDetail.Event.StartTime.ToString("h:mm tt") - @eventDetail.Event.EndTime.ToString("h:mm tt")</li>
+                                    <li><span>venue : </span>@eventDetail.Venue</li>
+                                </ul>
+                            }
                             <p>@eventDetail.Description</p>
                             <div class="speakers-area fix">
                                 <h4>speakers</h4>
-                              @*  @foreach (var speaker in eventDetail.Speakers)
+                            @*    @foreach (var speaker in eventDetail.Speakers)
                                 {
                                     <div class="single-speaker">
                                         <div class="speaker-img">
