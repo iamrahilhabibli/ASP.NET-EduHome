@@ -1,3 +1,4 @@
+using EduHome.Core.Entities;
 using EduHome.DataAccess.Contexts;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -24,3 +25,4 @@ app.MapControllerRoute(
 
 
 app.Run();
+
